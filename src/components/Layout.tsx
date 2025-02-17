@@ -1,4 +1,3 @@
-
 import { Image, Upload, Smile } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -13,18 +12,16 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       <header className="border-b bg-white/80 backdrop-blur-lg sticky top-0 z-50">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
+            <Avatar className="h-8 w-8">
+              <AvatarImage src="/placeholder.svg" />
+              <AvatarFallback>PFP</AvatarFallback>
+            </Avatar>
             <Link to="/" className="font-bold text-xl">
               NFTVerse
             </Link>
-            <div className="flex items-center gap-4">
-              <Button variant="outline" size="sm">
-                Upgrade
-              </Button>
-              <Avatar className="h-8 w-8">
-                <AvatarImage src="/placeholder.svg" />
-                <AvatarFallback>PFP</AvatarFallback>
-              </Avatar>
-            </div>
+            <Button variant="outline" size="sm">
+              Upgrade
+            </Button>
           </div>
         </div>
       </header>

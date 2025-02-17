@@ -28,29 +28,26 @@ const MemeCard = ({ imageUrl }: { imageUrl: string }) => (
         className="object-cover w-full h-full transform transition-transform hover:scale-105"
       />
     </div>
-    <div className="p-4 space-y-3">
-      <div className="flex justify-between items-center text-muted-foreground">
-        <div className="flex items-center gap-2">
-          <Eye className="w-4 h-4" />
-          <span className="text-sm">2.4k</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <MessageSquare className="w-4 h-4" />
-          <span className="text-sm">48</span>
-        </div>
-      </div>
+    <div className="p-4">
       <div className="flex justify-between items-center">
+        <div className="flex items-center gap-2">
+          <Eye className="w-4 h-4 text-muted-foreground" />
+          <span className="text-sm text-muted-foreground">2.4k</span>
+        </div>
         <div className="flex gap-2">
           <Button variant="ghost" size="icon" className="h-8 w-8">
             <Heart className="w-4 h-4" />
           </Button>
           <Button variant="ghost" size="icon" className="h-8 w-8">
+            <MessageSquare className="w-4 h-4" />
+          </Button>
+          <Button variant="ghost" size="icon" className="h-8 w-8">
             <Share className="w-4 h-4" />
           </Button>
+          <Button variant="ghost" size="icon" className="h-8 w-8">
+            <Bookmark className="w-4 h-4" />
+          </Button>
         </div>
-        <Button variant="ghost" size="icon" className="h-8 w-8">
-          <Bookmark className="w-4 h-4" />
-        </Button>
       </div>
     </div>
   </Card>
