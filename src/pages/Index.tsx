@@ -19,6 +19,9 @@ const NFT_IMAGES = [
   "https://i.seadn.io/s/raw/files/a96b7d8ec41ba827f82b32d8564e9389.png?auto=format&dpr=1&w=1000"
 ];
 
+// Repeat images for endless scroll
+const EXTENDED_IMAGES = [...NFT_IMAGES, ...NFT_IMAGES, ...NFT_IMAGES];
+
 const MemeCard = ({ imageUrl }: { imageUrl: string }) => (
   <Card className="overflow-hidden bg-white/50 backdrop-blur-sm animate-fade-up">
     <div className="aspect-square relative overflow-hidden">
@@ -28,13 +31,13 @@ const MemeCard = ({ imageUrl }: { imageUrl: string }) => (
         className="object-cover w-full h-full transform transition-transform hover:scale-105"
       />
     </div>
-    <div className="p-4">
+    <div className="p-4 space-y-4">
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-2">
           <Eye className="w-4 h-4 text-muted-foreground" />
           <span className="text-sm text-muted-foreground">2.4k</span>
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-6">
           <Button variant="ghost" size="icon" className="h-8 w-8">
             <Heart className="w-4 h-4" />
           </Button>
@@ -47,6 +50,14 @@ const MemeCard = ({ imageUrl }: { imageUrl: string }) => (
           <Button variant="ghost" size="icon" className="h-8 w-8">
             <Bookmark className="w-4 h-4" />
           </Button>
+        </div>
+      </div>
+      <div className="flex justify-between items-center border-t pt-4 text-sm">
+        <div className="text-muted-foreground">
+          Price: <span className="font-medium text-foreground">0.12345 ETH</span>
+        </div>
+        <div className="text-muted-foreground">
+          Last sale: <span className="font-medium text-foreground">0.11 ETH</span>
         </div>
       </div>
     </div>
@@ -73,8 +84,8 @@ const Index = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {NFT_IMAGES.map((imageUrl, index) => (
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          {EXTENDED_IMAGES.map((imageUrl, index) => (
             <MemeCard key={index} imageUrl={imageUrl} />
           ))}
         </div>
