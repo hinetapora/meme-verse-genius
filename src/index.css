@@ -24,6 +24,16 @@
     --input: 240 5.9% 90%;
     --ring: 252 84% 74%;
     --radius: 1rem;
+    --light-green: #90ee90;
+    --medium-green: #32cd32;
+    --light-blue: #add8e6;
+    --light-red: #f08080;
+    --pink: #ff69b4;
+    --medium-yellow: #ffcc00;
+    --bright-yellow: #ffd700;
+    --shake-duration: 0.8s;
+    --flash-duration: 0.6s;
+    --announcement-bg-color: #ffff00;
   }
 
   * {
@@ -60,9 +70,35 @@
   100% { transform: translateX(0); background-color: rgba(173, 216, 230, 0.1); }
 }
 
+@keyframes flash {
+  0% { background-color: var(--normal-yellow); }
+  14% { background-color: var(--light-green); }
+  28% { background-color: var(--medium-green); }
+  42% { background-color: var(--light-blue); }
+  57% { background-color: var(--light-red); }
+  71% { background-color: var(--pink); }
+  85% { background-color: var(--medium-yellow); }
+  100% { background-color: var(--bright-yellow); }
+}
+
+@keyframes wobble {
+  0% { transform: translateX(0); }
+  10% { transform: translateX(-20px); }
+  20% { transform: translateX(20px); }
+  30% { transform: translateX(-16px); }
+  40% { transform: translateX(16px); }
+  50% { transform: translateX(-12px); }
+  60% { transform: translateX(12px); }
+  70% { transform: translateX(-8px); }
+  80% { transform: translateX(8px); }
+  90% { transform: translateX(0); }
+  100% { transform: translateX(0); }
+}
+
 .announcement-bar {
-  @apply px-4 py-2 rounded-lg text-sm font-medium bg-primary/5 animate-pulse;
-  animation: shake-flash 3s infinite;
+  @apply px-4 py-2 rounded-lg text-sm font-medium;
+  animation: flash var(--flash-duration) linear infinite,
+             wobble var(--shake-duration) ease-in-out infinite;
 }
 
 .announcement-content {

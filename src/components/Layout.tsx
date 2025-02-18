@@ -102,7 +102,118 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       marketCap: "$47.2K",
       replies: "1",
     },
-    // ... keep existing code (token data array)
+    {
+      emoji: "💎",
+      user: "XYZ123",
+      quantity: "0.5 BTC",
+      token: "BITCOIN",
+      marketCap: "$60K",
+      replies: "5",
+    },
+    {
+      emoji: "🔥",
+      user: "ABC456",
+      quantity: "10 ETH",
+      token: "ETHEREUM",
+      marketCap: "$25K",
+      replies: "2",
+    },
+    {
+      emoji: "🚀",
+      user: "DEF789",
+      quantity: "50 ADA",
+      token: "CARDANO",
+      marketCap: "$0.3K",
+      replies: "10",
+    },
+    {
+      emoji: "💰",
+      user: "GHI012",
+      quantity: "20 DOGE",
+      token: "DOGECOIN",
+      marketCap: "$0.08K",
+      replies: "3",
+    },
+    {
+      emoji: "🌕",
+      user: "JKL345",
+      quantity: "2 AVAX",
+      token: "AVALANCHE",
+      marketCap: "$10K",
+      replies: "7",
+    },
+    {
+      emoji: "🌍",
+      user: "MNO678",
+      quantity: "100 LTC",
+      token: "LITECOIN",
+      marketCap: "$40K",
+      replies: "8",
+    },
+    {
+      emoji: "🌈",
+      user: "PQR901",
+      quantity: "0.2 XRP",
+      token: "XRP",
+      marketCap: "$5K",
+      replies: "4",
+    },
+    {
+      emoji: "💎",
+      user: "STU234",
+      quantity: "0.5 DOT",
+      token: "POLKADOT",
+      marketCap: "$3K",
+      replies: "6",
+    },
+    {
+      emoji: "🎉",
+      user: "VWX567",
+      quantity: "1 BCH",
+      token: "BITCOIN CASH",
+      marketCap: "$10.5K",
+      replies: "9",
+    },
+    {
+      emoji: "🌟",
+      user: "YZA890",
+      quantity: "15 UNI",
+      token: "UNISWAP",
+      marketCap: "$20K",
+      replies: "11",
+    },
+    {
+      emoji: "🔗",
+      user: "BCD345",
+      quantity: "0.25 LINK",
+      token: "CHAINLINK",
+      marketCap: "$15K",
+      replies: "12",
+    },
+    {
+      emoji: "💵",
+      user: "EFG678",
+      quantity: "30 USDT",
+      token: "TETHER",
+      marketCap: "$30K",
+      replies: "13",
+    },
+    {
+      emoji: "⚡",
+      user: "HIJ901",
+      quantity: "10 MATIC",
+      token: "POLYGON",
+      marketCap: "$35K",
+      replies: "14",
+    },
+    {
+      emoji: "🔋",
+      user: "KLM234",
+      quantity: "0.75 XLM",
+      token: "STELLAR",
+      marketCap: "$12K",
+      replies: "15",
+    },
   ];
 
   if (!mounted) return null;
@@ -111,24 +222,22 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     <div className="min-h-screen bg-background">
       <header className="border-b bg-background/80 backdrop-blur-lg sticky top-0 z-50">
         <div className="container mx-auto px-4">
-          <div className="flex items-center h-16">
-            <Avatar className="h-8 w-8">
+          <div className="grid grid-cols-3 items-center h-16">
+            <Avatar className="h-8 w-8 justify-self-start">
               <AvatarImage src="https://i.seadn.io/s/raw/files/50688c4879e0f8e9d2d65ed84eec54e3.png?auto=format&dpr=1&w=1000" />
               <AvatarFallback>P</AvatarFallback>
             </Avatar>
             
-            <div className="flex-1 flex justify-center">
-              <span className="text-2xl font-bold">𝓟</span>
-            </div>
+            <span className="text-2xl font-bold justify-self-center">𝓟</span>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 justify-self-end">
               <Dialog>
                 <DialogTrigger asChild>
                   <Button variant="ghost" size="icon">
                     <MoreHorizontal className="h-5 w-5" />
                   </Button>
                 </DialogTrigger>
-                <DialogContent className="sm:max-w-[425px]">
+                <DialogContent className="sm:max-w-[425px] rounded-3xl bg-background/95 backdrop-blur-sm">
                   <DialogHeader>
                     <DialogTitle>Global preferences</DialogTitle>
                   </DialogHeader>
@@ -195,30 +304,66 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                     Connect
                   </Button>
                 </DialogTrigger>
-                <DialogContent>
+                <DialogContent className="sm:max-w-[425px] rounded-3xl bg-background/95 backdrop-blur-sm">
                   <DialogHeader>
                     <DialogTitle>Connect a wallet</DialogTitle>
                   </DialogHeader>
                   <div className="space-y-4 py-4">
-                    <Button className="w-full bg-gradient-to-r from-pink-500 to-purple-500 text-white" size="lg">
-                      Get NFTVerse Wallet
-                    </Button>
+                    <div className="space-y-2">
+                      <Button variant="outline" className="w-full justify-between bg-primary/10" size="lg">
+                        <div className="flex items-center gap-2">
+                          <img src="/coinbase.svg" alt="Coinbase" className="w-6 h-6" />
+                          Coinbase Wallet
+                        </div>
+                        <ChevronRight className="h-4 w-4" />
+                      </Button>
+                      <Button variant="outline" className="w-full justify-between bg-primary/10" size="lg">
+                        <div className="flex items-center gap-2">
+                          <img src="/walletconnect.svg" alt="WalletConnect" className="w-6 h-6" />
+                          WalletConnect
+                        </div>
+                        <ChevronRight className="h-4 w-4" />
+                      </Button>
+                    </div>
+                    
+                    <div className="relative">
+                      <div className="absolute inset-0 flex items-center">
+                        <span className="w-full border-t" />
+                      </div>
+                      <div className="relative flex justify-center text-xs uppercase">
+                        <span className="bg-background px-2 text-muted-foreground">
+                          Other popular wallets
+                        </span>
+                      </div>
+                    </div>
+
                     <div className="space-y-2">
                       <Button variant="outline" className="w-full justify-between" size="lg">
                         <div className="flex items-center gap-2">
-                          <img src="/metamask.png" alt="MetaMask" className="w-6 h-6" />
+                          <img src="/metamask.svg" alt="MetaMask" className="w-6 h-6" />
                           MetaMask
                         </div>
                         <span className="text-muted-foreground">Detected</span>
                       </Button>
                       <Button variant="outline" className="w-full justify-between" size="lg">
                         <div className="flex items-center gap-2">
-                          <img src="/walletconnect.png" alt="WalletConnect" className="w-6 h-6" />
-                          WalletConnect
+                          <img src="/phantom.svg" alt="Phantom" className="w-6 h-6" />
+                          Phantom
+                        </div>
+                        <span className="text-muted-foreground">Detected</span>
+                      </Button>
+                      <Button variant="outline" className="w-full justify-between" size="lg">
+                        <div className="flex items-center gap-2">
+                          <img src="/trust.svg" alt="Trust Wallet" className="w-6 h-6" />
+                          Trust Wallet
                         </div>
                         <ChevronRight className="h-4 w-4" />
                       </Button>
                     </div>
+
+                    <p className="text-center text-sm text-muted-foreground mt-6">
+                      By connecting a wallet, you agree to NFTVerse's Terms of Service and consent to its Privacy Policy.
+                    </p>
                   </div>
                 </DialogContent>
               </Dialog>
@@ -226,9 +371,13 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-4 py-2 bg-primary/5">
+        <div className="hidden md:grid grid-cols-2 gap-4 px-4 py-2 bg-primary/5">
           <AnnouncementBar tokenData={tokenData} />
           <AnnouncementBar tokenData={[...tokenData].reverse()} />
+        </div>
+        
+        <div className="block md:hidden px-4 py-2 bg-primary/5">
+          <AnnouncementBar tokenData={tokenData} />
         </div>
 
         <div className="border-t">
@@ -261,22 +410,21 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         <div className="container mx-auto px-4">
           <div className="flex justify-around py-3">
             {[
-              { icon: <Home size={24} />, label: "Home", path: "/" },
-              { icon: <Search size={24} />, label: "Search", path: "/search" },
-              { icon: <Brain size={24} />, label: "AI", path: "/ai" },
-              { icon: <ImageIcon size={24} />, label: "Media", path: "/media" },
-              { icon: <Bell size={24} />, label: "Alerts", path: "/alerts" },
-              { icon: <MessageSquare size={24} />, label: "Messages", path: "/messages" }
+              { icon: <Home size={24} />, path: "/" },
+              { icon: <Search size={24} />, path: "/search" },
+              { icon: <Brain size={24} />, path: "/ai" },
+              { icon: <ImageIcon size={24} />, path: "/media" },
+              { icon: <Bell size={24} />, path: "/alerts" },
+              { icon: <MessageSquare size={24} />, path: "/messages" }
             ].map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
-                className={`flex flex-col items-center space-y-1 transition-colors ${
+                className={`transition-colors ${
                   isActive(item.path) ? "text-primary" : "text-muted-foreground hover:text-primary"
                 }`}
               >
                 {item.icon}
-                <span className="text-xs">{item.label}</span>
               </Link>
             ))}
           </div>
