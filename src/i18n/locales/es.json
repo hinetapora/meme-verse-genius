@@ -1,0 +1,19 @@
+
+{
+  "nav": {
+    "profile": "Perfil",
+    "premium": "Premium",
+    "communities": "Comunidades",
+    "bookmarks": "Marcadores",
+    "jobs": "Trabajos",
+    "lists": "Listas",
+    "spaces": "Espacios",
+    "monetization": "Monetización",
+    "settings": "Configuración y privacidad",
+    "help": "Centro de ayuda"
+  },
+  "profile": {
+    "following": "Siguiendo",
+    "followers": "Seguidores"
+  }
+}

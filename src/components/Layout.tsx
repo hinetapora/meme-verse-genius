@@ -10,13 +10,25 @@ import {
   Moon,
   Languages,
   Wallet,
-  ChevronRight
+  ChevronRight,
+  User,
+  Crown,
+  Users,
+  Bookmark,
+  Briefcase,
+  List,
+  Hash,
+  DollarSign,
+  Settings,
+  HelpCircle
 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useTheme } from "next-themes";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { useTranslation } from 'react-i18next';
 import {
   Dialog,
   DialogContent,
@@ -84,6 +96,7 @@ const AnnouncementBar = ({ tokenData }: { tokenData: any[] }) => {
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const location = useLocation();
   const { theme, setTheme } = useTheme();
+  const { t, i18n } = useTranslation();
   const isActive = (path: string) => location.pathname === path;
 
   const [mounted, setMounted] = useState(false);
@@ -92,6 +105,10 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  const handleLanguageChange = (value: string) => {
+    i18n.changeLanguage(value);
+  };
 
   const tokenData = [
     {
@@ -216,6 +233,22 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     },
   ];
 
+  const drawerLinks = [
+    { icon: User, label: t('nav.profile'), path: '/profile' },
+    { icon: Crown, label: t('nav.premium'), path: '/premium' },
+    { icon: Users, label: t('nav.communities'), path: '/communities' },
+    { icon: Bookmark, label: t('nav.bookmarks'), path: '/bookmarks' },
+    { icon: Briefcase, label: t('nav.jobs'), path: '/jobs' },
+    { icon: List, label: t('nav.lists'), path: '/lists' },
+    { icon: Hash, label: t('nav.spaces'), path: '/spaces' },
+    { icon: DollarSign, label: t('nav.monetization'), path: '/monetization' }
+  ];
+
+  const bottomDrawerLinks = [
+    { icon: Settings, label: t('nav.settings'), path: '/settings' },
+    { icon: HelpCircle, label: t('nav.help'), path: '/help' }
+  ];
+
   if (!mounted) return null;
 
   return (
@@ -223,11 +256,64 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       <header className="border-b bg-background/80 backdrop-blur-lg sticky top-0 z-50">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-3 items-center h-16">
-            <Avatar className="h-8 w-8 justify-self-start">
-              <AvatarImage src="https://i.seadn.io/s/raw/files/50688c4879e0f8e9d2d65ed84eec54e3.png?auto=format&dpr=1&w=1000" />
-              <AvatarFallback>P</AvatarFallback>
-            </Avatar>
-            
+            <Sheet>
+              <SheetTrigger asChild>
+                <Avatar className="h-8 w-8 cursor-pointer">
+                  <AvatarImage src="https://i.seadn.io/s/raw/files/50688c4879e0f8e9d2d65ed84eec54e3.png?auto=format&dpr=1&w=1000" />
+                  <AvatarFallback>P</AvatarFallback>
+                </Avatar>
+              </SheetTrigger>
+              <SheetContent side="left" className="w-[300px] sm:w-[400px] p-0">
+                <div className="p-6">
+                  <div className="flex items-center gap-4 mb-6">
+                    <Avatar className="h-12 w-12">
+                      <AvatarImage src="https://i.seadn.io/s/raw/files/50688c4879e0f8e9d2d65ed84eec54e3.png?auto=format&dpr=1&w=1000" />
+                      <AvatarFallback>P</AvatarFallback>
+                    </Avatar>
+                    <div>
+                      <h3 className="font-bold">NFTVerse</h3>
+                      <p className="text-sm text-muted-foreground">@nftverse</p>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-6 mb-6">
+                    <div>
+                      <span className="font-bold">2,313</span>
+                      <span className="text-sm text-muted-foreground ml-1">{t('profile.following')}</span>
+                    </div>
+                    <div>
+                      <span className="font-bold">5,808</span>
+                      <span className="text-sm text-muted-foreground ml-1">{t('profile.followers')}</span>
+                    </div>
+                  </div>
+
+                  <nav className="space-y-4">
+                    {drawerLinks.map((link) => (
+                      <Link
+                        key={link.path}
+                        to={link.path}
+                        className="flex items-center gap-3 text-lg hover:bg-accent px-2 py-2 rounded-md"
+                      >
+                        <link.icon className="h-6 w-6" />
+                        {link.label}
+                      </Link>
+                    ))}
+                    <div className="border-t my-4" />
+                    {bottomDrawerLinks.map((link) => (
+                      <Link
+                        key={link.path}
+                        to={link.path}
+                        className="flex items-center gap-3 text-lg hover:bg-accent px-2 py-2 rounded-md"
+                      >
+                        <link.icon className="h-6 w-6" />
+                        {link.label}
+                      </Link>
+                    ))}
+                  </nav>
+                </div>
+              </SheetContent>
+            </Sheet>
+
             <span className="text-2xl font-bold justify-self-center">𝓟</span>
 
             <div className="flex items-center gap-2 justify-self-end">
@@ -248,7 +334,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                         <span>Theme</span>
                       </div>
                       <Select onValueChange={setTheme} defaultValue={theme}>
-                        <SelectTrigger className="w-[100px]">
+                        <SelectTrigger className="w-[100px] bg-background">
                           <SelectValue placeholder="Theme" />
                         </SelectTrigger>
                         <SelectContent>
@@ -263,16 +349,13 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                         <Languages className="h-4 w-4" />
                         <span>Language</span>
                       </div>
-                      <Select defaultValue="en">
-                        <SelectTrigger className="w-[100px]">
+                      <Select defaultValue={i18n.language} onValueChange={handleLanguageChange}>
+                        <SelectTrigger className="w-[100px] bg-background">
                           <SelectValue placeholder="Language" />
                         </SelectTrigger>
                         <SelectContent>
-                          {LANGUAGES.map((lang) => (
-                            <SelectItem key={lang.code} value={lang.code}>
-                              {lang.label}
-                            </SelectItem>
-                          ))}
+                          <SelectItem value="en">English</SelectItem>
+                          <SelectItem value="es">Español</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
