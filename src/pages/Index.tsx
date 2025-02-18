@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Layout from "@/components/Layout";
@@ -10,12 +11,105 @@ import {
   SlidersHorizontal
 } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { CardData } from "@/types/card";
 
-const NFT_IMAGES = [
-  "https://i.seadn.io/s/raw/files/50688c4879e0f8e9d2d65ed84eec54e3.png?auto=format&dpr=1&w=1000",
-  "https://i.seadn.io/s/raw/files/bac3790dda2968cb6d839753530b6202.png?auto=format&dpr=1&w=1000",
-  "https://i.seadn.io/s/raw/files/1b09d5906d743add176aa38c88c866a3.png?auto=format&dpr=1&w=1000",
-  "https://i.seadn.io/s/raw/files/a96b7d8ec41ba827f82b32d8564e9389.png?auto=format&dpr=1&w=1000"
+const CARD_DATA: CardData[] = [
+  {
+    "created_by": "DjXkmB",
+    "time": "10h ago",
+    "market_cap": "$5.2K",
+    "replies": 5,
+    "coin_name": "Doge Official Savings Website (Savings)",
+    "image_name": "Savings.jpeg"
+  },
+  {
+    "created_by": "AjdtvD",
+    "time": "5h ago",
+    "market_cap": "$4.9K",
+    "replies": 0,
+    "coin_name": "BULL DOGE (BDOGE)",
+    "image_name": "BDOGE.jpeg"
+  },
+  {
+    "created_by": "62JdDL",
+    "time": "7h ago",
+    "market_cap": "$5.5K",
+    "replies": 22,
+    "coin_name": "doge owner new puppy (Miru)",
+    "image_name": "Miru.jpeg"
+  },
+  {
+    "created_by": "AmcLDX",
+    "time": "7h ago",
+    "market_cap": "$5.5K",
+    "replies": 15,
+    "coin_name": "1st Grok 3 Game (ThankDOGE)",
+    "image_name": "ThankDOGE.jpeg"
+  },
+  {
+    "created_by": "2z11T7",
+    "time": "4h ago",
+    "market_cap": "$50.4K",
+    "replies": 6,
+    "coin_name": "AIDOGE (AIDOGE)",
+    "image_name": "AIDOGE.jpeg"
+  },
+  {
+    "created_by": "wxP8fg",
+    "time": "4h ago",
+    "market_cap": "$4.7K",
+    "replies": 0,
+    "coin_name": "Tesla India Hiring (DOGE)",
+    "image_name": "DOGE.jpeg"
+  },
+  {
+    "created_by": "2GPgpe",
+    "time": "6h ago",
+    "market_cap": "$5.2K",
+    "replies": 0,
+    "coin_name": "DOGE IRS (DIRS)",
+    "image_name": "DIRS.jpeg"
+  },
+  {
+    "created_by": "Ck7nnN",
+    "time": "10h ago",
+    "market_cap": "$6.0K",
+    "replies": 2,
+    "coin_name": "DOGE BEST FRIEND (ICE)",
+    "image_name": "ICE.jpeg"
+  },
+  {
+    "created_by": "69uyNu",
+    "time": "10h ago",
+    "market_cap": "$21.1K",
+    "replies": 1,
+    "coin_name": "DOGE Wall of Receipts (WOR)",
+    "image_name": "WOR.jpeg"
+  },
+  {
+    "created_by": "HuZMs6",
+    "time": "7h ago",
+    "market_cap": "$4.7K",
+    "replies": 0,
+    "coin_name": "First Game Made on Grok3 (ThankDoge)",
+    "image_name": "ThankDoge.jpeg"
+  },
+  {
+    "created_by": "32FHTG",
+    "time": "7h ago",
+    "market_cap": "$8.1K",
+    "replies": 73,
+    "coin_name": "1st Grok 3 Game. (ThankDOGE)",
+    "image_name": "ThankDOGE.jpeg"
+  },
+  {
+    "created_by": "3D3GiG",
+    "time": "7h ago",
+    "market_cap": "$4.7K",
+    "replies": 1,
+    "coin_name": "doge owner new puppy (Miru)",
+    "image_name": "Miru.jpeg"
+  }
 ];
 
 const CARD_COLORS = [
@@ -27,23 +121,30 @@ const CARD_COLORS = [
   "bg-[#8B5CF6]/50"
 ];
 
-const EXTENDED_IMAGES = Array(25).fill(NFT_IMAGES).flat();
-
-const MemeCard = ({ imageUrl, index }: { imageUrl: string; index: number }) => (
+const MemeCard = ({ data, index }: { data: CardData; index: number }) => (
   <Card className={`overflow-hidden backdrop-blur-sm animate-fade-up hover:scale-105 transition-transform ${CARD_COLORS[index % CARD_COLORS.length]}`}>
     <div className="aspect-square relative overflow-hidden">
       <img
-        src={imageUrl}
-        alt="NFT"
+        src={`/images/${data.image_name}`}
+        alt={data.coin_name}
         className="object-cover w-full h-full transform transition-transform hover:scale-105"
       />
     </div>
     <div className="p-4 space-y-4">
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 text-sm text-muted-foreground">
+            <span>{data.created_by}</span>
+            <span>·</span>
+            <span>{data.time}</span>
+          </div>
+        </div>
+      </div>
+      <div className="flex justify-between items-center">
+        <div className="flex items-center gap-2">
           <div className="relative">
-            <Eye className="w-4 h-4 text-muted-foreground" />
-            <span className="absolute -top-2 -right-2 text-[10px] text-muted-foreground">2.4k</span>
+            <MessageSquare className="w-4 h-4 text-muted-foreground" />
+            <span className="absolute -top-2 -right-2 text-[10px] text-muted-foreground">{data.replies}</span>
           </div>
         </div>
         <div className="flex gap-3">
@@ -62,11 +163,9 @@ const MemeCard = ({ imageUrl, index }: { imageUrl: string; index: number }) => (
         </div>
       </div>
       <div className="space-y-2 text-sm">
+        <div className="font-medium text-foreground">{data.coin_name}</div>
         <div className="text-muted-foreground">
-          Price: <span className="font-medium text-foreground">0.12345 ETH</span>
-        </div>
-        <div className="text-muted-foreground">
-          Last sale: <span className="font-medium text-foreground">0.11 ETH</span>
+          Market Cap: <span className="font-medium text-foreground">{data.market_cap}</span>
         </div>
       </div>
     </div>
@@ -94,8 +193,8 @@ const Index = () => {
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-          {EXTENDED_IMAGES.map((imageUrl, index) => (
-            <MemeCard key={index} imageUrl={imageUrl} index={index} />
+          {CARD_DATA.map((data, index) => (
+            <MemeCard key={index} data={data} index={index} />
           ))}
         </div>
       </div>
