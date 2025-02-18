@@ -1,0 +1,25 @@
+
+{
+  "nav": {
+    "profile": "प्रोफ़ाइल",
+    "premium": "प्रीमियम",
+    "communities": "समुदाय",
+    "bookmarks": "बुकमार्क",
+    "jobs": "नौकरियां",
+    "lists": "सूचियां",
+    "spaces": "स्पेस",
+    "monetization": "मुद्रीकरण",
+    "settings": "सेटिंग्स और गोपनीयता",
+    "help": "सहायता केंद्र"
+  },
+  "profile": {
+    "following": "फ़ॉलो कर रहे हैं",
+    "followers": "फ़ॉलोअर्स"
+  },
+  "settings": {
+    "theme": "थीम",
+    "language": "भाषा",
+    "currency": "मुद्रा",
+    "preferences": "वैश्विक प्राथमिकताएं"
+  }
+}

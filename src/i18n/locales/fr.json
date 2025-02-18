@@ -1,0 +1,25 @@
+
+{
+  "nav": {
+    "profile": "Profil",
+    "premium": "Premium",
+    "communities": "Communautés",
+    "bookmarks": "Signets",
+    "jobs": "Emplois",
+    "lists": "Listes",
+    "spaces": "Espaces",
+    "monetization": "Monétisation",
+    "settings": "Paramètres et confidentialité",
+    "help": "Centre d'aide"
+  },
+  "profile": {
+    "following": "Abonnements",
+    "followers": "Abonnés"
+  },
+  "settings": {
+    "theme": "Thème",
+    "language": "Langue",
+    "currency": "Devise",
+    "preferences": "Préférences globales"
+  }
+}

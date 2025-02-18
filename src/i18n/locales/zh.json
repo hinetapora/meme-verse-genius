@@ -1,0 +1,25 @@
+
+{
+  "nav": {
+    "profile": "个人资料",
+    "premium": "高级版",
+    "communities": "社区",
+    "bookmarks": "书签",
+    "jobs": "工作",
+    "lists": "列表",
+    "spaces": "空间",
+    "monetization": "变现",
+    "settings": "设置和隐私",
+    "help": "帮助中心"
+  },
+  "profile": {
+    "following": "正在关注",
+    "followers": "关注者"
+  },
+  "settings": {
+    "theme": "主题",
+    "language": "语言",
+    "currency": "货币",
+    "preferences": "全局设置"
+  }
+}

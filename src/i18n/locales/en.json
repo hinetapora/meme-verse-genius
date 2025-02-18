@@ -15,5 +15,11 @@
   "profile": {
     "following": "Following",
     "followers": "Followers"
+  },
+  "settings": {
+    "theme": "Theme",
+    "language": "Language",
+    "currency": "Currency",
+    "preferences": "Global preferences"
   }
 }

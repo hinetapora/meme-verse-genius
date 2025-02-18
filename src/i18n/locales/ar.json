@@ -1,0 +1,25 @@
+
+{
+  "nav": {
+    "profile": "الملف الشخصي",
+    "premium": "بريميوم",
+    "communities": "المجتمعات",
+    "bookmarks": "إشارات مرجعية",
+    "jobs": "وظائف",
+    "lists": "القوائم",
+    "spaces": "المساحات",
+    "monetization": "التحويل النقدي",
+    "settings": "الإعدادات والخصوصية",
+    "help": "مركز المساعدة"
+  },
+  "profile": {
+    "following": "يتابع",
+    "followers": "المتابعون"
+  },
+  "settings": {
+    "theme": "المظهر",
+    "language": "اللغة",
+    "currency": "العملة",
+    "preferences": "التفضيلات العامة"
+  }
+}

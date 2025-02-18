@@ -1,0 +1,25 @@
+
+{
+  "nav": {
+    "profile": "Профиль",
+    "premium": "Премиум",
+    "communities": "Сообщества",
+    "bookmarks": "Закладки",
+    "jobs": "Вакансии",
+    "lists": "Списки",
+    "spaces": "Пространства",
+    "monetization": "Монетизация",
+    "settings": "Настройки и конфиденциальность",
+    "help": "Справочный центр"
+  },
+  "profile": {
+    "following": "Читаемые",
+    "followers": "Читатели"
+  },
+  "settings": {
+    "theme": "Тема",
+    "language": "Язык",
+    "currency": "Валюта",
+    "preferences": "Глобальные настройки"
+  }
+}

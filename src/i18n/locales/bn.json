@@ -1,0 +1,25 @@
+
+{
+  "nav": {
+    "profile": "প্রোফাইল",
+    "premium": "প্রিমিয়াম",
+    "communities": "কমিউনিটি",
+    "bookmarks": "বুকমার্ক",
+    "jobs": "চাকরি",
+    "lists": "তালিকা",
+    "spaces": "স্পেস",
+    "monetization": "মানিটাইজেশন",
+    "settings": "সেটিংস ও গোপনীয়তা",
+    "help": "সহায়তা কেন্দ্র"
+  },
+  "profile": {
+    "following": "ফলো করছে",
+    "followers": "ফলোয়ার"
+  },
+  "settings": {
+    "theme": "থিম",
+    "language": "ভাষা",
+    "currency": "মুদ্রা",
+    "preferences": "গ্লোবাল পছন্দসমূহ"
+  }
+}
