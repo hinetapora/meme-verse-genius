@@ -430,7 +430,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                       </Button>
                       <Button variant="outline" className="w-full justify-between" size="lg">
                         <div className="flex items-center gap-2">
-                          <img src="/phantom.svg" alt="Phantom" className="w-6 h-6" />
+                          <img src="/phantom.png" alt="Phantom" className="w-6 h-6" />
                           Phantom
                         </div>
                         <span className="text-muted-foreground">Detected</span>
