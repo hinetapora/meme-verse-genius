@@ -92,7 +92,7 @@ const CARD_DATA: CardData[] = [
     "market_cap": "$4.7K",
     "replies": 0,
     "coin_name": "First Game Made on Grok3 (ThankDoge)",
-    "image_name": "ThankDoge.jpeg"
+    "image_name": "Grok3.jpeg"
   },
   {
     "created_by": "32FHTG",
