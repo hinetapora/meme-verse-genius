@@ -28,6 +28,7 @@ import {
 import { useEffect, useState } from "react";
 import { useIOS } from "@/hooks/use-mobile";
 import { useLocalStorage } from "@/hooks/use-storage";
+import { useTranslation } from 'react-i18next';
 
 const CARD_DATA: CardData[] = [
   {
@@ -216,6 +217,7 @@ const IOSInstallModal = ({ isOpen, onOpenChange }: { isOpen: boolean; onOpenChan
 );
 
 const Index = () => {
+  const { t } = useTranslation();
   const [displayedCards, setDisplayedCards] = useState(CARD_DATA);
   const isIOS = useIOS();
   const [hasShownIOSPrompt, setHasShownIOSPrompt] = useLocalStorage('ios-prompt-shown', false);
@@ -255,12 +257,12 @@ const Index = () => {
             <SlidersHorizontal className="w-5 h-5 text-muted-foreground" />
             <Select defaultValue="trending">
               <SelectTrigger className="w-[140px]">
-                <SelectValue placeholder="Filter by" />
+                <SelectValue placeholder={t('filter.title')} />
               </SelectTrigger>
               <SelectContent className="bg-background border border-border">
-                <SelectItem value="trending">Trending</SelectItem>
-                <SelectItem value="latest">Latest</SelectItem>
-                <SelectItem value="top">Top Rated</SelectItem>
+                <SelectItem value="trending">{t('filter.trending')}</SelectItem>
+                <SelectItem value="latest">{t('filter.latest')}</SelectItem>
+                <SelectItem value="top">{t('filter.top')}</SelectItem>
               </SelectContent>
             </Select>
           </div>

@@ -21,5 +21,11 @@
     "language": "Language",
     "currency": "Currency",
     "preferences": "Global preferences"
+  },
+  "filter": {
+    "title": "Filter by",
+    "trending": "Trending",
+    "latest": "Latest",
+    "top": "Top Rated"
   }
 }

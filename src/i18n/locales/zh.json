@@ -21,5 +21,11 @@
     "language": "语言",
     "currency": "货币",
     "preferences": "全局设置"
+  },
+  "filter": {
+    "title": "筛选",
+    "trending": "热门",
+    "latest": "最新",
+    "top": "最佳"
   }
 }

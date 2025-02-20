@@ -347,15 +347,18 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <Languages className="h-4 w-4" />
-                        <span>Language</span>
+                        <span>{t('settings.language')}</span>
                       </div>
                       <Select defaultValue={i18n.language} onValueChange={handleLanguageChange}>
                         <SelectTrigger className="w-[100px] bg-background">
-                          <SelectValue placeholder="Language" />
+                          <SelectValue placeholder={t('settings.language')} />
                         </SelectTrigger>
                         <SelectContent className="bg-background border border-border">
-                          <SelectItem value="en">English</SelectItem>
-                          <SelectItem value="es">Español</SelectItem>
+                          {LANGUAGES.map((lang) => (
+                            <SelectItem key={lang.code} value={lang.code}>
+                              {lang.label}
+                            </SelectItem>
+                          ))}
                         </SelectContent>
                       </Select>
                     </div>
