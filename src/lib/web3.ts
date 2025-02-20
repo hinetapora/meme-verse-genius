@@ -3,7 +3,7 @@ import { createWeb3Modal, defaultWagmiConfig } from '@web3modal/wagmi/react'
 import { mainnet, polygon, optimism, arbitrum, base } from 'wagmi/chains'
 import { WagmiConfig } from 'wagmi'
 
-const projectId = 'YOUR_WALLETCONNECT_PROJECT_ID'
+const projectId = '9a5ba03e8f6b772aa7042c0dd46cb735'
 
 const metadata = {
   name: 'RugTron3000',
