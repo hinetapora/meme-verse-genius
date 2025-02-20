@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Layout from "@/components/Layout";
@@ -8,10 +7,27 @@ import {
   Heart, 
   Eye, 
   Bookmark,
-  SlidersHorizontal
+  SlidersHorizontal,
+  ArrowBigUp
 } from "lucide-react";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { 
+  Select, 
+  SelectContent, 
+  SelectItem, 
+  SelectTrigger, 
+  SelectValue 
+} from "@/components/ui/select";
 import { CardData } from "@/types/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { useEffect, useState } from "react";
+import { useIOS } from "@/hooks/use-mobile";
+import { useLocalStorage } from "@/hooks/use-storage";
 
 const CARD_DATA: CardData[] = [
   {
@@ -121,8 +137,12 @@ const CARD_COLORS = [
   "bg-[#8B5CF6]/50"
 ];
 
-const MemeCard = ({ data, index }: { data: CardData; index: number }) => (
-  <Card className={`overflow-hidden backdrop-blur-sm animate-fade-up hover:scale-105 transition-transform ${CARD_COLORS[index % CARD_COLORS.length]}`}>
+const MemeCard = ({ data, index, isFirst }: { data: CardData; index: number; isFirst: boolean }) => (
+  <Card 
+    className={`overflow-hidden backdrop-blur-sm animate-fade-up hover:scale-105 transition-transform ${
+      CARD_COLORS[index % CARD_COLORS.length]
+    } ${isFirst ? 'animate-wobble' : ''}`}
+  >
     <div className="aspect-square relative overflow-hidden">
       <img
         src={`/images/${data.image_name}`}
@@ -144,7 +164,9 @@ const MemeCard = ({ data, index }: { data: CardData; index: number }) => (
         <div className="flex items-center gap-2">
           <div className="relative">
             <MessageSquare className="w-4 h-4 text-muted-foreground" />
-            <span className="absolute -top-2 -right-2 text-[10px] text-muted-foreground">{data.replies}</span>
+            <span className="absolute -top-2 -right-2 text-[10px] text-muted-foreground">
+              {data.replies}
+            </span>
           </div>
         </div>
         <div className="flex gap-3">
@@ -172,7 +194,59 @@ const MemeCard = ({ data, index }: { data: CardData; index: number }) => (
   </Card>
 );
 
+const IOSInstallModal = ({ isOpen, onOpenChange }: { isOpen: boolean; onOpenChange: (open: boolean) => void }) => (
+  <Dialog open={isOpen} onOpenChange={onOpenChange}>
+    <DialogContent className="sm:max-w-[425px] text-center">
+      <DialogHeader>
+        <DialogTitle className="text-2xl font-bold mb-4">
+          Add to Home Screen
+        </DialogTitle>
+      </DialogHeader>
+      <div className="space-y-6 py-4">
+        <ArrowBigUp className="w-12 h-12 mx-auto animate-bounce text-primary" />
+        <p className="text-lg">
+          Tap the share icon and select 'Add to Home Screen' to save the app for quick access.
+        </p>
+        <div className="flex justify-center">
+          <Button onClick={() => onOpenChange(false)}>Got it!</Button>
+        </div>
+      </div>
+    </DialogContent>
+  </Dialog>
+);
+
 const Index = () => {
+  const [displayedCards, setDisplayedCards] = useState(CARD_DATA);
+  const isIOS = useIOS();
+  const [hasShownIOSPrompt, setHasShownIOSPrompt] = useLocalStorage('ios-prompt-shown', false);
+  const [showIOSModal, setShowIOSModal] = useState(false);
+
+  useEffect(() => {
+    if (isIOS && !hasShownIOSPrompt) {
+      setShowIOSModal(true);
+      setHasShownIOSPrompt(true);
+    }
+  }, [isIOS, hasShownIOSPrompt]);
+
+  useEffect(() => {
+    const cycleCards = () => {
+      const randomInterval = Math.random() * (1200 - 700) + 700;
+      const timeoutId = setTimeout(() => {
+        setDisplayedCards(prev => {
+          const newCards = [...prev];
+          const firstCard = newCards.shift();
+          if (firstCard) newCards.push(firstCard);
+          return newCards;
+        });
+        cycleCards();
+      }, randomInterval);
+
+      return () => clearTimeout(timeoutId);
+    };
+
+    cycleCards();
+  }, []);
+
   return (
     <Layout>
       <div className="space-y-6 pb-20">
@@ -183,7 +257,7 @@ const Index = () => {
               <SelectTrigger className="w-[140px]">
                 <SelectValue placeholder="Filter by" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-[#1A1F2C] border-none">
                 <SelectItem value="trending">Trending</SelectItem>
                 <SelectItem value="latest">Latest</SelectItem>
                 <SelectItem value="top">Top Rated</SelectItem>
@@ -193,11 +267,21 @@ const Index = () => {
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-          {CARD_DATA.map((data, index) => (
-            <MemeCard key={index} data={data} index={index} />
+          {displayedCards.map((data, index) => (
+            <MemeCard 
+              key={data.created_by} 
+              data={data} 
+              index={index}
+              isFirst={index === 0}
+            />
           ))}
         </div>
       </div>
+
+      <IOSInstallModal 
+        isOpen={showIOSModal} 
+        onOpenChange={setShowIOSModal}
+      />
     </Layout>
   );
 };

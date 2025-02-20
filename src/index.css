@@ -46,6 +46,24 @@
   }
 }
 
+@keyframes wobble {
+  0% { transform: translateX(0); }
+  10% { transform: translateX(-20px); }
+  20% { transform: translateX(20px); }
+  30% { transform: translateX(-16px); }
+  40% { transform: translateX(16px); }
+  50% { transform: translateX(-12px); }
+  60% { transform: translateX(12px); }
+  70% { transform: translateX(-8px); }
+  80% { transform: translateX(8px); }
+  90% { transform: translateX(0); }
+  100% { transform: translateX(0); }
+}
+
+.animate-wobble {
+  animation: wobble 0.8s ease-in-out;
+}
+
 .glass-card {
   @apply bg-white/50 backdrop-blur-sm border border-white/20 shadow-lg;
 }
@@ -79,20 +97,6 @@
   71% { background-color: var(--pink); }
   85% { background-color: var(--medium-yellow); }
   100% { background-color: var(--bright-yellow); }
-}
-
-@keyframes wobble {
-  0% { transform: translateX(0); }
-  10% { transform: translateX(-20px); }
-  20% { transform: translateX(20px); }
-  30% { transform: translateX(-16px); }
-  40% { transform: translateX(16px); }
-  50% { transform: translateX(-12px); }
-  60% { transform: translateX(12px); }
-  70% { transform: translateX(-8px); }
-  80% { transform: translateX(8px); }
-  90% { transform: translateX(0); }
-  100% { transform: translateX(0); }
 }
 
 .announcement-bar {
