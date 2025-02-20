@@ -257,7 +257,7 @@ const Index = () => {
               <SelectTrigger className="w-[140px]">
                 <SelectValue placeholder="Filter by" />
               </SelectTrigger>
-              <SelectContent className="bg-[#1A1F2C] border-none">
+              <SelectContent className="bg-background border border-border">
                 <SelectItem value="trending">Trending</SelectItem>
                 <SelectItem value="latest">Latest</SelectItem>
                 <SelectItem value="top">Top Rated</SelectItem>
