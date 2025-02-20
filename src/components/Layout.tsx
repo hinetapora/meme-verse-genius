@@ -337,7 +337,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                         <SelectTrigger className="w-[100px] bg-background">
                           <SelectValue placeholder="Theme" />
                         </SelectTrigger>
-                        <SelectContent>
+                        <SelectContent className="bg-background border border-border">
                           <SelectItem value="light">Light</SelectItem>
                           <SelectItem value="dark">Dark</SelectItem>
                           <SelectItem value="system">Auto</SelectItem>
@@ -353,7 +353,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                         <SelectTrigger className="w-[100px] bg-background">
                           <SelectValue placeholder="Language" />
                         </SelectTrigger>
-                        <SelectContent>
+                        <SelectContent className="bg-background border border-border">
                           <SelectItem value="en">English</SelectItem>
                           <SelectItem value="es">Español</SelectItem>
                         </SelectContent>
@@ -368,7 +368,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                         <SelectTrigger className="w-[100px]">
                           <SelectValue placeholder="Currency" />
                         </SelectTrigger>
-                        <SelectContent>
+                        <SelectContent className="bg-background border border-border">
                           {CURRENCIES.map((currency) => (
                             <SelectItem key={currency.code} value={currency.code}>
                               {currency.code}
