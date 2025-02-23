@@ -498,9 +498,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                   </div>
 
                   <div className="hidden">
-                    <w3m-button />
-                    <w3m-connect-button />
-                    <w3m-network-button />
+                    <div id="w3m-button"></div>
+                    <div id="w3m-connect-button"></div>
+                    <div id="w3m-network-button"></div>
                   </div>
                 </DialogContent>
               </Dialog>
