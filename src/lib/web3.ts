@@ -27,12 +27,11 @@ const publicClient = createPublicClient({
   transport: http()
 })
 
-// Create wagmi config
+// Create wagmi config with required properties only
 export const config = defaultWagmiConfig({ 
   chains, 
   projectId, 
-  metadata,
-  publicClient 
+  metadata
 })
 
 // Initialize web3modal
