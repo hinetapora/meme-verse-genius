@@ -387,66 +387,120 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                     Connect
                   </Button>
                 </DialogTrigger>
-                <DialogContent className="sm:max-w-[425px] rounded-3xl bg-background/95 backdrop-blur-sm">
-                  <DialogHeader>
-                    <DialogTitle>Connect a wallet</DialogTitle>
+                <DialogContent className="sm:max-w-[425px] rounded-3xl bg-[#1c1c1c]/95 backdrop-blur-sm p-0">
+                  <DialogHeader className="p-6 pb-0">
+                    <DialogTitle className="text-2xl font-normal">Connect a wallet</DialogTitle>
                   </DialogHeader>
-                  <div className="space-y-4 py-4">
-                    <div className="space-y-2">
-                      <Button variant="outline" className="w-full justify-between bg-primary/10" size="lg">
-                        <div className="flex items-center gap-2">
-                          <img src="/coinbase.svg" alt="Coinbase" className="w-6 h-6" />
-                          Coinbase Wallet
+                  <div className="space-y-3 p-6">
+                    <div className="space-y-3">
+                      <Button
+                        variant="outline"
+                        className="w-full justify-between bg-[#1c1c1c] hover:bg-[#2a2a2a] border-[#2a2a2a] h-[60px] rounded-2xl"
+                        onClick={() => {
+                          const connectButton = document.querySelector('w3m-connect-button');
+                          if (connectButton) {
+                            (connectButton as any).click();
+                          }
+                        }}
+                      >
+                        <div className="flex items-center gap-3">
+                          <img src="/coinbase.svg" alt="Coinbase" className="w-8 h-8" />
+                          <span className="text-base font-normal">Coinbase Wallet</span>
                         </div>
-                        <ChevronRight className="h-4 w-4" />
+                        <ChevronRight className="h-5 w-5 text-muted-foreground" />
                       </Button>
-                      <Button variant="outline" className="w-full justify-between bg-primary/10" size="lg">
-                        <div className="flex items-center gap-2">
-                          <img src="/walletconnect.svg" alt="WalletConnect" className="w-6 h-6" />
-                          WalletConnect
+
+                      <Button
+                        variant="outline"
+                        className="w-full justify-between bg-[#1c1c1c] hover:bg-[#2a2a2a] border-[#2a2a2a] h-[60px] rounded-2xl"
+                        onClick={() => {
+                          const walletButton = document.querySelector('w3m-connect-button');
+                          if (walletButton) {
+                            (walletButton as any).click();
+                          }
+                        }}
+                      >
+                        <div className="flex items-center gap-3">
+                          <img src="/walletconnect.svg" alt="WalletConnect" className="w-8 h-8" />
+                          <span className="text-base font-normal">WalletConnect</span>
                         </div>
-                        <ChevronRight className="h-4 w-4" />
+                        <ChevronRight className="h-5 w-5 text-muted-foreground" />
                       </Button>
                     </div>
                     
-                    <div className="relative">
+                    <div className="relative py-2">
                       <div className="absolute inset-0 flex items-center">
-                        <span className="w-full border-t" />
+                        <span className="w-full border-t border-[#2a2a2a]" />
                       </div>
                       <div className="relative flex justify-center text-xs uppercase">
-                        <span className="bg-background px-2 text-muted-foreground">
-                          Other popular wallets
+                        <span className="bg-[#1c1c1c] px-2 text-muted-foreground">
+                          OTHER POPULAR WALLETS
                         </span>
                       </div>
                     </div>
 
-                    <div className="space-y-2">
-                      <Button variant="outline" className="w-full justify-between" size="lg">
-                        <div className="flex items-center gap-2">
-                          <img src="/metamask.svg" alt="MetaMask" className="w-6 h-6" />
-                          MetaMask
+                    <div className="space-y-3">
+                      <Button
+                        variant="outline"
+                        className="w-full justify-between bg-[#1c1c1c] hover:bg-[#2a2a2a] border-[#2a2a2a] h-[60px] rounded-2xl"
+                        onClick={() => {
+                          const walletButton = document.querySelector('w3m-connect-button');
+                          if (walletButton) {
+                            (walletButton as any).click();
+                          }
+                        }}
+                      >
+                        <div className="flex items-center gap-3">
+                          <img src="/metamask.svg" alt="MetaMask" className="w-8 h-8" />
+                          <span className="text-base font-normal">MetaMask</span>
                         </div>
-                        <span className="text-muted-foreground">Detected</span>
+                        <span className="text-sm text-muted-foreground">Detected</span>
                       </Button>
-                      <Button variant="outline" className="w-full justify-between" size="lg">
-                        <div className="flex items-center gap-2">
-                          <img src="/phantom.png" alt="Phantom" className="w-6 h-6" />
-                          Phantom
+
+                      <Button
+                        variant="outline"
+                        className="w-full justify-between bg-[#1c1c1c] hover:bg-[#2a2a2a] border-[#2a2a2a] h-[60px] rounded-2xl"
+                        onClick={() => {
+                          const walletButton = document.querySelector('w3m-connect-button');
+                          if (walletButton) {
+                            (walletButton as any).click();
+                          }
+                        }}
+                      >
+                        <div className="flex items-center gap-3">
+                          <img src="/phantom.png" alt="Phantom" className="w-8 h-8" />
+                          <span className="text-base font-normal">Phantom</span>
                         </div>
-                        <span className="text-muted-foreground">Detected</span>
+                        <span className="text-sm text-muted-foreground">Detected</span>
                       </Button>
-                      <Button variant="outline" className="w-full justify-between" size="lg">
-                        <div className="flex items-center gap-2">
-                          <img src="/trust.svg" alt="Trust Wallet" className="w-6 h-6" />
-                          Trust Wallet
+
+                      <Button
+                        variant="outline"
+                        className="w-full justify-between bg-[#1c1c1c] hover:bg-[#2a2a2a] border-[#2a2a2a] h-[60px] rounded-2xl"
+                        onClick={() => {
+                          const walletButton = document.querySelector('w3m-connect-button');
+                          if (walletButton) {
+                            (walletButton as any).click();
+                          }
+                        }}
+                      >
+                        <div className="flex items-center gap-3">
+                          <img src="/trust.svg" alt="Trust Wallet" className="w-8 h-8" />
+                          <span className="text-base font-normal">Trust Wallet</span>
                         </div>
-                        <ChevronRight className="h-4 w-4" />
+                        <ChevronRight className="h-5 w-5 text-muted-foreground" />
                       </Button>
                     </div>
 
                     <p className="text-center text-sm text-muted-foreground mt-6">
                       By connecting a wallet, you agree to NFTVerse's Terms of Service and consent to its Privacy Policy.
                     </p>
+                  </div>
+
+                  <div className="hidden">
+                    <w3m-button />
+                    <w3m-connect-button />
+                    <w3m-network-button />
                   </div>
                 </DialogContent>
               </Dialog>
