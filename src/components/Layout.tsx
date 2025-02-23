@@ -44,9 +44,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useState, useEffect } from "react";
-import { useWeb3Modal } from '@web3modal/wagmi/react'
-import { useAccount, useConnect, useDisconnect } from 'wagmi'
-import { useToast } from "@/components/ui/use-toast"
 
 const LANGUAGES = [
   { code: "en", label: "English" },
@@ -101,14 +98,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   const { theme, setTheme } = useTheme();
   const { t, i18n } = useTranslation();
   const isActive = (path: string) => location.pathname === path;
-  const { toast } = useToast()
 
   const [mounted, setMounted] = useState(false);
   const [showWalletModal, setShowWalletModal] = useState(false);
-  
-  const { open } = useWeb3Modal()
-  const { address, isConnected } = useAccount()
-  const { disconnect } = useDisconnect()
 
   useEffect(() => {
     setMounted(true);
@@ -117,39 +109,6 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   const handleLanguageChange = (value: string) => {
     i18n.changeLanguage(value);
   };
-
-  const handleWalletConnect = async (type: string) => {
-    try {
-      if (isConnected) {
-        await disconnect()
-        toast({
-          title: "Wallet disconnected",
-          description: "Your wallet has been disconnected successfully",
-        })
-        return
-      }
-
-      if (type === 'walletconnect' || type === 'coinbase') {
-        await open()
-      } else {
-        // For other wallets like MetaMask and Phantom
-        const { connect } = useConnect()
-        await connect()
-      }
-
-      toast({
-        title: "Wallet connected",
-        description: "Your wallet has been connected successfully",
-      })
-    } catch (error) {
-      console.error('Wallet connection error:', error)
-      toast({
-        variant: "destructive",
-        title: "Connection failed",
-        description: "Failed to connect wallet. Please try again.",
-      })
-    }
-  }
 
   const tokenData = [
     {
@@ -309,11 +268,11 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                   <div className="flex items-center gap-4 mb-6">
                     <Avatar className="h-12 w-12">
                       <AvatarImage src="https://i.seadn.io/s/raw/files/50688c4879e0f8e9d2d65ed84eec54e3.png?auto=format&dpr=1&w=1000" />
-                      <AvatarFallback>RT</AvatarFallback>
+                      <AvatarFallback>P</AvatarFallback>
                     </Avatar>
                     <div>
-                      <h3 className="font-bold">RugTron3000</h3>
-                      <p className="text-sm text-muted-foreground">@rugtron</p>
+                      <h3 className="font-bold">NFTVerse</h3>
+                      <p className="text-sm text-muted-foreground">@nftverse</p>
                     </div>
                   </div>
 
@@ -428,7 +387,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
               <Dialog open={showWalletModal} onOpenChange={setShowWalletModal}>
                 <DialogTrigger asChild>
                   <Button variant="outline" size="sm" className="text-xs px-3 py-1">
-                    {isConnected ? "Connected" : "Connect"}
+                    Connect
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[425px] rounded-3xl bg-background/95 backdrop-blur-sm">
@@ -437,24 +396,14 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                   </DialogHeader>
                   <div className="space-y-4 py-4">
                     <div className="space-y-2">
-                      <Button 
-                        variant="outline" 
-                        className="w-full justify-between bg-primary/10" 
-                        size="lg"
-                        onClick={() => handleWalletConnect('coinbase')}
-                      >
+                      <Button variant="outline" className="w-full justify-between bg-primary/10" size="lg">
                         <div className="flex items-center gap-2">
                           <img src="/coinbase.svg" alt="Coinbase" className="w-6 h-6" />
                           Coinbase Wallet
                         </div>
                         <ChevronRight className="h-4 w-4" />
                       </Button>
-                      <Button 
-                        variant="outline" 
-                        className="w-full justify-between bg-primary/10" 
-                        size="lg"
-                        onClick={() => handleWalletConnect('walletconnect')}
-                      >
+                      <Button variant="outline" className="w-full justify-between bg-primary/10" size="lg">
                         <div className="flex items-center gap-2">
                           <img src="/walletconnect.svg" alt="WalletConnect" className="w-6 h-6" />
                           WalletConnect
@@ -475,36 +424,21 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                     </div>
 
                     <div className="space-y-2">
-                      <Button 
-                        variant="outline" 
-                        className="w-full justify-between" 
-                        size="lg"
-                        onClick={() => handleWalletConnect('metamask')}
-                      >
+                      <Button variant="outline" className="w-full justify-between" size="lg">
                         <div className="flex items-center gap-2">
                           <img src="/metamask.svg" alt="MetaMask" className="w-6 h-6" />
                           MetaMask
                         </div>
                         <span className="text-muted-foreground">Detected</span>
                       </Button>
-                      <Button 
-                        variant="outline" 
-                        className="w-full justify-between" 
-                        size="lg"
-                        onClick={() => handleWalletConnect('phantom')}
-                      >
+                      <Button variant="outline" className="w-full justify-between" size="lg">
                         <div className="flex items-center gap-2">
                           <img src="/phantom.png" alt="Phantom" className="w-6 h-6" />
                           Phantom
                         </div>
                         <span className="text-muted-foreground">Detected</span>
                       </Button>
-                      <Button 
-                        variant="outline" 
-                        className="w-full justify-between" 
-                        size="lg"
-                        onClick={() => handleWalletConnect('trust')}
-                      >
+                      <Button variant="outline" className="w-full justify-between" size="lg">
                         <div className="flex items-center gap-2">
                           <img src="/trust.svg" alt="Trust Wallet" className="w-6 h-6" />
                           Trust Wallet
@@ -514,7 +448,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                     </div>
 
                     <p className="text-center text-sm text-muted-foreground mt-6">
-                      By connecting a wallet, you agree to RugTron3000's Terms of Service and consent to its Privacy Policy.
+                      By connecting a wallet, you agree to NFTVerse's Terms of Service and consent to its Privacy Policy.
                     </p>
                   </div>
                 </DialogContent>
