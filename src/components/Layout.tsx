@@ -387,33 +387,91 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                     Connect
                   </Button>
                 </DialogTrigger>
-                <DialogContent className="w3m-modal">
+                <DialogContent>
                   <DialogHeader>
                     <DialogTitle>Connect a wallet</DialogTitle>
                   </DialogHeader>
                   <div className="space-y-4 py-4">
-                    <div className="space-y-2">
-                      <w3m-button />
-                      <w3m-connect-button />
-                      <w3m-network-button />
-                    </div>
-                    
+                    <Button
+                      variant="outline"
+                      className="w-full justify-start gap-2"
+                      onClick={() => {
+                        const connectButton = document.querySelector('w3m-connect-button');
+                        if (connectButton) {
+                          (connectButton as any).click();
+                        }
+                      }}
+                    >
+                      <img src="/metamask.svg" alt="MetaMask" className="h-5 w-5" />
+                      MetaMask
+                    </Button>
+
+                    <Button
+                      variant="outline"
+                      className="w-full justify-start gap-2"
+                      onClick={() => {
+                        const walletButton = document.querySelector('w3m-connect-button');
+                        if (walletButton) {
+                          (walletButton as any).click();
+                        }
+                      }}
+                    >
+                      <img src="/phantom.png" alt="Phantom" className="h-5 w-5" />
+                      Phantom
+                    </Button>
+
+                    <Button
+                      variant="outline"
+                      className="w-full justify-start gap-2"
+                      onClick={() => {
+                        const walletButton = document.querySelector('w3m-connect-button');
+                        if (walletButton) {
+                          (walletButton as any).click();
+                        }
+                      }}
+                    >
+                      <img src="/trust.svg" alt="Trust Wallet" className="h-5 w-5" />
+                      Trust Wallet
+                    </Button>
+
+                    <Button
+                      variant="outline"
+                      className="w-full justify-start gap-2"
+                      onClick={() => {
+                        const walletButton = document.querySelector('w3m-connect-button');
+                        if (walletButton) {
+                          (walletButton as any).click();
+                        }
+                      }}
+                    >
+                      <img src="/coinbase.svg" alt="Coinbase" className="h-5 w-5" />
+                      Coinbase Wallet
+                    </Button>
+
                     <div className="relative">
                       <div className="absolute inset-0 flex items-center">
                         <span className="w-full border-t" />
                       </div>
                       <div className="relative flex justify-center text-xs uppercase">
                         <span className="bg-background px-2 text-muted-foreground">
-                          Other popular wallets
+                          More options
                         </span>
                       </div>
                     </div>
 
-                    <div className="space-y-2">
-                      <w3m-wallet-button wallet="metamask" />
-                      <w3m-wallet-button wallet="phantom" />
-                      <w3m-wallet-button wallet="trust" />
-                    </div>
+                    <Button
+                      variant="outline"
+                      className="w-full justify-start gap-2"
+                      onClick={() => {
+                        const walletButton = document.querySelector('w3m-connect-button');
+                        if (walletButton) {
+                          (walletButton as any).click();
+                        }
+                      }}
+                    >
+                      <img src="/walletconnect.svg" alt="WalletConnect" className="h-5 w-5" />
+                      Other Wallets
+                    </Button>
 
                     <p className="text-center text-sm text-muted-foreground mt-6">
                       By connecting a wallet, you agree to NFTVerse's Terms of Service and consent to its Privacy Policy.

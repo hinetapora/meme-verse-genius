@@ -21,7 +21,7 @@ const metadata = {
 const chains = [mainnet, polygon, optimism, arbitrum];
 
 // Create wagmi config
-export const wagmiConfig = defaultWagmiConfig({ 
+const wagmiConfig = defaultWagmiConfig({ 
   chains, 
   projectId, 
   metadata,
@@ -36,5 +36,6 @@ createWeb3Modal({
   themeMode: 'dark'
 });
 
+export { wagmiConfig };
 export { WagmiConfig };
 export { queryClient };

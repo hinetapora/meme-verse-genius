@@ -4,8 +4,9 @@ import { ThemeProvider } from 'next-themes';
 import Index from './pages/Index';
 import NotFound from './pages/NotFound';
 import { Toaster } from '@/components/ui/toaster';
-import { WagmiConfig, wagmiConfig, queryClient } from '@/lib/web3';
+import { WagmiConfig, wagmiConfig } from '@/lib/web3';
 import { QueryClientProvider } from '@tanstack/react-query';
+import { queryClient } from '@/lib/web3';
 
 function App() {
   return (
