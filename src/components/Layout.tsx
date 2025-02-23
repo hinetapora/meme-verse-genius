@@ -387,26 +387,15 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                     Connect
                   </Button>
                 </DialogTrigger>
-                <DialogContent className="sm:max-w-[425px] rounded-3xl bg-background/95 backdrop-blur-sm">
+                <DialogContent className="w3m-modal">
                   <DialogHeader>
                     <DialogTitle>Connect a wallet</DialogTitle>
                   </DialogHeader>
                   <div className="space-y-4 py-4">
                     <div className="space-y-2">
-                      <Button variant="outline" className="w-full justify-between bg-primary/10" size="lg">
-                        <div className="flex items-center gap-2">
-                          <img src="/coinbase.svg" alt="Coinbase" className="w-6 h-6" />
-                          Coinbase Wallet
-                        </div>
-                        <ChevronRight className="h-4 w-4" />
-                      </Button>
-                      <Button variant="outline" className="w-full justify-between bg-primary/10" size="lg">
-                        <div className="flex items-center gap-2">
-                          <img src="/walletconnect.svg" alt="WalletConnect" className="w-6 h-6" />
-                          WalletConnect
-                        </div>
-                        <ChevronRight className="h-4 w-4" />
-                      </Button>
+                      <w3m-button />
+                      <w3m-connect-button />
+                      <w3m-network-button />
                     </div>
                     
                     <div className="relative">
@@ -421,27 +410,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                     </div>
 
                     <div className="space-y-2">
-                      <Button variant="outline" className="w-full justify-between" size="lg">
-                        <div className="flex items-center gap-2">
-                          <img src="/metamask.svg" alt="MetaMask" className="w-6 h-6" />
-                          MetaMask
-                        </div>
-                        <span className="text-muted-foreground">Detected</span>
-                      </Button>
-                      <Button variant="outline" className="w-full justify-between" size="lg">
-                        <div className="flex items-center gap-2">
-                          <img src="/phantom.png" alt="Phantom" className="w-6 h-6" />
-                          Phantom
-                        </div>
-                        <span className="text-muted-foreground">Detected</span>
-                      </Button>
-                      <Button variant="outline" className="w-full justify-between" size="lg">
-                        <div className="flex items-center gap-2">
-                          <img src="/trust.svg" alt="Trust Wallet" className="w-6 h-6" />
-                          Trust Wallet
-                        </div>
-                        <ChevronRight className="h-4 w-4" />
-                      </Button>
+                      <w3m-wallet-button wallet="metamask" />
+                      <w3m-wallet-button wallet="phantom" />
+                      <w3m-wallet-button wallet="trust" />
                     </div>
 
                     <p className="text-center text-sm text-muted-foreground mt-6">
