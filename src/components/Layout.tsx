@@ -397,9 +397,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                         variant="outline"
                         className="w-full justify-between bg-[#1c1c1c] hover:bg-[#2a2a2a] border-[#2a2a2a] h-[60px] rounded-2xl"
                         onClick={() => {
-                          const connectButton = document.querySelector('w3m-connect-button');
+                          const connectButton = document.querySelector('#w3m-connect-button');
                           if (connectButton) {
-                            (connectButton as any).click();
+                            (connectButton as HTMLElement).click();
                           }
                         }}
                       >
@@ -414,9 +414,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                         variant="outline"
                         className="w-full justify-between bg-[#1c1c1c] hover:bg-[#2a2a2a] border-[#2a2a2a] h-[60px] rounded-2xl"
                         onClick={() => {
-                          const walletButton = document.querySelector('w3m-connect-button');
-                          if (walletButton) {
-                            (walletButton as any).click();
+                          const connectButton = document.querySelector('#w3m-connect-button');
+                          if (connectButton) {
+                            (connectButton as HTMLElement).click();
                           }
                         }}
                       >
@@ -444,9 +444,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                         variant="outline"
                         className="w-full justify-between bg-[#1c1c1c] hover:bg-[#2a2a2a] border-[#2a2a2a] h-[60px] rounded-2xl"
                         onClick={() => {
-                          const walletButton = document.querySelector('w3m-connect-button');
-                          if (walletButton) {
-                            (walletButton as any).click();
+                          const connectButton = document.querySelector('#w3m-connect-button');
+                          if (connectButton) {
+                            (connectButton as HTMLElement).click();
                           }
                         }}
                       >
@@ -461,9 +461,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                         variant="outline"
                         className="w-full justify-between bg-[#1c1c1c] hover:bg-[#2a2a2a] border-[#2a2a2a] h-[60px] rounded-2xl"
                         onClick={() => {
-                          const walletButton = document.querySelector('w3m-connect-button');
-                          if (walletButton) {
-                            (walletButton as any).click();
+                          const connectButton = document.querySelector('#w3m-connect-button');
+                          if (connectButton) {
+                            (connectButton as HTMLElement).click();
                           }
                         }}
                       >
@@ -478,9 +478,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                         variant="outline"
                         className="w-full justify-between bg-[#1c1c1c] hover:bg-[#2a2a2a] border-[#2a2a2a] h-[60px] rounded-2xl"
                         onClick={() => {
-                          const walletButton = document.querySelector('w3m-connect-button');
-                          if (walletButton) {
-                            (walletButton as any).click();
+                          const connectButton = document.querySelector('#w3m-connect-button');
+                          if (connectButton) {
+                            (connectButton as HTMLElement).click();
                           }
                         }}
                       >
