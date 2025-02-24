@@ -46,6 +46,19 @@ import {
 } from "@/components/ui/select";
 import { useState, useEffect } from "react";
 
+const CURRENCIES = [
+  { code: "USD", name: "US Dollar" },
+  { code: "EUR", name: "Euro" },
+  { code: "GBP", name: "British Pound" },
+  { code: "JPY", name: "Japanese Yen" },
+  { code: "CNY", name: "Chinese Yuan" },
+  { code: "KRW", name: "Korean Won" },
+  { code: "INR", name: "Indian Rupee" },
+  { code: "BRL", name: "Brazilian Real" },
+  { code: "AUD", name: "Australian Dollar" },
+  { code: "CAD", name: "Canadian Dollar" }
+];
+
 const drawerLinks = [
   { path: "/profile", icon: User, label: "Profile" },
   { path: "/premium", icon: Crown, label: "Premium" },
