@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -110,36 +111,21 @@
   100% { transform: translateX(0); background-color: rgba(173, 216, 230, 0.1); }
 }
 
-@keyframes shake-flash-1 {
-  0% { transform: translateX(0); background-color: rgba(255, 182, 193, 0.1); }
-  25% { transform: translateX(5px); background-color: rgba(173, 216, 230, 0.1); }
-  50% { transform: translateX(-5px); background-color: rgba(144, 238, 144, 0.1); }
-  75% { transform: translateX(5px); background-color: rgba(255, 182, 193, 0.1); }
-  100% { transform: translateX(0); background-color: rgba(173, 216, 230, 0.1); }
-}
-
-@keyframes shake-flash-2 {
-  0% { transform: translateX(0); background-color: rgba(144, 238, 144, 0.1); }
-  25% { transform: translateX(-5px); background-color: rgba(255, 182, 193, 0.1); }
-  50% { transform: translateX(5px); background-color: rgba(173, 216, 230, 0.1); }
-  75% { transform: translateX(-5px); background-color: rgba(144, 238, 144, 0.1); }
-  100% { transform: translateX(0); background-color: rgba(255, 182, 193, 0.1); }
-}
-
-.announcement-bar-1 {
-  @apply px-3 py-2 rounded-lg text-sm font-medium;
-  animation: shake-flash-1 4s linear infinite;
-}
-
-.announcement-bar-2 {
-  @apply px-3 py-2 rounded-lg text-sm font-medium;
-  animation: shake-flash-2 4s linear infinite;
+@keyframes flash {
+  0% { background-color: var(--normal-yellow); }
+  14% { background-color: var(--light-green); }
+  28% { background-color: var(--medium-green); }
+  42% { background-color: var(--light-blue); }
+  57% { background-color: var(--light-red); }
+  71% { background-color: var(--pink); }
+  85% { background-color: var(--medium-yellow); }
+  100% { background-color: var(--bright-yellow); }
 }
 
 .announcement-bar {
   @apply px-3 py-2 rounded-lg text-sm font-medium;
-  animation: wobble var(--shake-duration) ease-in-out infinite,
-             shake-flash var(--flash-duration) linear infinite;
+  animation: flash var(--flash-duration) linear infinite,
+             wobble var(--shake-duration) ease-in-out infinite;
 }
 
 .announcement-content {

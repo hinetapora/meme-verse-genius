@@ -9,8 +9,10 @@ import NotFound from './pages/NotFound';
 import { Toaster } from '@/components/ui/toaster';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
+// 1. Get projectId at https://cloud.walletconnect.com
 const projectId = 'YOUR_PROJECT_ID';
 
+// 2. Create wagmiConfig
 const metadata = {
   name: 'NFTVerse',
   description: 'NFTVerse Web3 App',
@@ -18,26 +20,17 @@ const metadata = {
   icons: ['https://avatars.githubusercontent.com/u/37784886']
 }
 
+const queryClient = new QueryClient();
 const chains = [mainnet, arbitrum]
 const wagmiConfig = defaultWagmiConfig({ chains, projectId, metadata })
 
-// Create a new QueryClient instance with default options
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 1000 * 60 * 5, // 5 minutes
-      cacheTime: 1000 * 60 * 30, // 30 minutes
-    },
-  },
-})
-
-// Create modal
+// 3. Create modal
 createWeb3Modal({ wagmiConfig, projectId, chains })
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <WagmiConfig config={wagmiConfig}>
+    <WagmiConfig config={wagmiConfig}>
+      <QueryClientProvider client={queryClient}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <Router>
             <Routes>
@@ -47,8 +40,8 @@ function App() {
           </Router>
           <Toaster />
         </ThemeProvider>
-      </WagmiConfig>
-    </QueryClientProvider>
+      </QueryClientProvider>
+    </WagmiConfig>
   );
 }
 
