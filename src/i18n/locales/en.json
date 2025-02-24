@@ -22,8 +22,36 @@
     "currency": "Currency",
     "preferences": "Global preferences"
   },
-  "bought": "bought",
-  "of": "of",
-  "marketCap": "market cap",
-  "replies": "replies"
+  "activity": {
+    "action": "bought"
+  },
+  "common": {
+    "of": "of",
+    "marketCap": "market cap",
+    "replies": "replies",
+    "filterBy": "Filter by",
+    "currentLanguage": "Language"
+  },
+  "filters": {
+    "title": "Filters",
+    "marketCap": "Market Cap",
+    "selectRange": "Select range",
+    "all": "All",
+    "under": "Under",
+    "over": "Over",
+    "activity": "Activity Level",
+    "selectActivity": "Select activity",
+    "highActivity": "High Activity",
+    "mediumActivity": "Medium Activity",
+    "lowActivity": "Low Activity",
+    "trending": "Trending",
+    "latest": "Latest",
+    "topRated": "Top Rated"
+  },
+  "tabs": {
+    "forYou": "For You",
+    "following": "Following",
+    "spaces": "Spaces",
+    "onbase": "onBase"
+  }
 }

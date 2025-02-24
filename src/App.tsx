@@ -9,10 +9,8 @@ import NotFound from './pages/NotFound';
 import { Toaster } from '@/components/ui/toaster';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-// 1. Get projectId at https://cloud.walletconnect.com
 const projectId = 'YOUR_PROJECT_ID';
 
-// 2. Create wagmiConfig
 const metadata = {
   name: 'NFTVerse',
   description: 'NFTVerse Web3 App',
@@ -24,7 +22,6 @@ const chains = [mainnet, arbitrum]
 const wagmiConfig = defaultWagmiConfig({ chains, projectId, metadata })
 const queryClient = new QueryClient()
 
-// 3. Create modal
 createWeb3Modal({ wagmiConfig, projectId, chains })
 
 function App() {
