@@ -7,6 +7,7 @@ import { mainnet, arbitrum } from 'viem/chains';
 import Index from './pages/Index';
 import NotFound from './pages/NotFound';
 import { Toaster } from '@/components/ui/toaster';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 // 1. Get projectId at https://cloud.walletconnect.com
 const projectId = 'YOUR_PROJECT_ID';
@@ -19,6 +20,7 @@ const metadata = {
   icons: ['https://avatars.githubusercontent.com/u/37784886']
 }
 
+const queryClient = new QueryClient();
 const chains = [mainnet, arbitrum]
 const wagmiConfig = defaultWagmiConfig({ chains, projectId, metadata })
 
@@ -28,18 +30,19 @@ createWeb3Modal({ wagmiConfig, projectId, chains })
 function App() {
   return (
     <WagmiConfig config={wagmiConfig}>
-      <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-        <Router>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Router>
-        <Toaster />
-      </ThemeProvider>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <Router>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Router>
+          <Toaster />
+        </ThemeProvider>
+      </QueryClientProvider>
     </WagmiConfig>
   );
 }
 
 export default App;
-
