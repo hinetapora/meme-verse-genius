@@ -46,49 +46,304 @@ import {
 } from "@/components/ui/select";
 import { useState, useEffect } from "react";
 
-const LANGUAGES = [
-  { code: "en", label: "English" },
-  { code: "es", label: "Español" },
-  { code: "zh", label: "中文" },
-  { code: "hi", label: "हिंदी" },
-  { code: "ar", label: "العربية" },
-  { code: "pt", label: "Português" },
-  { code: "bn", label: "বাংলা" },
-  { code: "ru", label: "Русский" },
-  { code: "fr", label: "Français" },
-  { code: "de", label: "Deutsch" }
-];
-
 const CURRENCIES = [
-  { code: "USD", symbol: "$" },
-  { code: "EUR", symbol: "€" },
-  { code: "GBP", symbol: "£" },
-  { code: "JPY", symbol: "¥" },
-  { code: "CNY", symbol: "¥" }
+  { code: "USD", name: "US Dollar" },
+  { code: "EUR", name: "Euro" },
+  { code: "GBP", name: "British Pound" },
+  { code: "JPY", name: "Japanese Yen" },
+  { code: "CNY", name: "Chinese Yuan" },
+  { code: "KRW", name: "Korean Won" },
+  { code: "INR", name: "Indian Rupee" },
+  { code: "BRL", name: "Brazilian Real" },
+  { code: "AUD", name: "Australian Dollar" },
+  { code: "CAD", name: "Canadian Dollar" }
 ];
 
-const AnnouncementBar = ({ tokenData }: { tokenData: any[] }) => {
+const drawerLinks = [
+  { path: "/profile", icon: User, label: "Profile" },
+  { path: "/premium", icon: Crown, label: "Premium" },
+  { path: "/communities", icon: Users, label: "Communities" },
+  { path: "/bookmarks", icon: Bookmark, label: "Bookmarks" },
+  { path: "/jobs", icon: Briefcase, label: "Jobs" },
+  { path: "/lists", icon: List, label: "Lists" },
+  { path: "/spaces", icon: Hash, label: "Spaces" },
+  { path: "/monetization", icon: DollarSign, label: "Monetization" },
+];
+
+const bottomDrawerLinks = [
+  { path: "/settings", icon: Settings, label: "Settings and privacy" },
+  { path: "/help", icon: HelpCircle, label: "Help Center" },
+];
+
+const transactionData = [
+  {
+    emoji: "🚀",
+    user: "77TQRY",
+    quantity: "0.0116 SOL",
+    token: "CHILLTATE",
+    marketCap: "$47.2K",
+    replies: "1",
+  },
+  {
+    emoji: "💎",
+    user: "XYZ123",
+    quantity: "0.5 BTC",
+    token: "BITCOIN",
+    marketCap: "$60K",
+    replies: "5",
+  },
+  {
+    emoji: "🔥",
+    user: "ABC456",
+    quantity: "10 ETH",
+    token: "ETHEREUM",
+    marketCap: "$25K",
+    replies: "2",
+  },
+  {
+    emoji: "🚀",
+    user: "DEF789",
+    quantity: "50 ADA",
+    token: "CARDANO",
+    marketCap: "$0.3K",
+    replies: "10",
+  },
+  {
+    emoji: "💰",
+    user: "GHI012",
+    quantity: "20 DOGE",
+    token: "DOGECOIN",
+    marketCap: "$0.08K",
+    replies: "3",
+  },
+  {
+    emoji: "🌕",
+    user: "JKL345",
+    quantity: "2 AVAX",
+    token: "AVALANCHE",
+    marketCap: "$10K",
+    replies: "7",
+  },
+  {
+    emoji: "🌍",
+    user: "MNO678",
+    quantity: "100 LTC",
+    token: "LITECOIN",
+    marketCap: "$40K",
+    replies: "8",
+  },
+  {
+    emoji: "🌈",
+    user: "PQR901",
+    quantity: "0.2 XRP",
+    token: "XRP",
+    marketCap: "$5K",
+    replies: "4",
+  },
+  {
+    emoji: "💎",
+    user: "STU234",
+    quantity: "0.5 DOT",
+    token: "POLKADOT",
+    marketCap: "$3K",
+    replies: "6",
+  },
+  {
+    emoji: "🎉",
+    user: "VWX567",
+    quantity: "1 BCH",
+    token: "BITCOIN CASH",
+    marketCap: "$10.5K",
+    replies: "9",
+  },
+  {
+    emoji: "🌟",
+    user: "YZA890",
+    quantity: "15 UNI",
+    token: "UNISWAP",
+    marketCap: "$20K",
+    replies: "11",
+  },
+  {
+    emoji: "🔗",
+    user: "BCD345",
+    quantity: "0.25 LINK",
+    token: "CHAINLINK",
+    marketCap: "$15K",
+    replies: "12",
+  },
+  {
+    emoji: "💵",
+    user: "EFG678",
+    quantity: "30 USDT",
+    token: "TETHER",
+    marketCap: "$30K",
+    replies: "13",
+  },
+  {
+    emoji: "⚡",
+    user: "HIJ901",
+    quantity: "10 MATIC",
+    token: "POLYGON",
+    marketCap: "$35K",
+    replies: "14",
+  },
+  {
+    emoji: "🔋",
+    user: "KLM234",
+    quantity: "0.75 XLM",
+    token: "STELLAR",
+    marketCap: "$12K",
+    replies: "15",
+  },
+];
+
+const mintData = [
+  {
+    emoji: "🎨",
+    user: "ArtLover",
+    quantity: "1",
+    token: "CryptoPunk #1234",
+    marketCap: "$120K",
+    replies: "5",
+  },
+  {
+    emoji: "🖼️",
+    user: "NFTMaster",
+    quantity: "2",
+    token: "BAYC #5678",
+    marketCap: "$250K",
+    replies: "8",
+  },
+  {
+    emoji: "✨",
+    user: "DigitalArtist",
+    quantity: "3",
+    token: "Azuki #9012",
+    marketCap: "$80K",
+    replies: "3",
+  },
+  {
+    emoji: "🖌️",
+    user: "CreativeOne",
+    quantity: "1",
+    token: "Moonbirds #3456",
+    marketCap: "$150K",
+    replies: "10",
+  },
+  {
+    emoji: "🌈",
+    user: "NFTCollector",
+    quantity: "5",
+    token: "Doodles #6789",
+    marketCap: "$90K",
+    replies: "7",
+  },
+  {
+    emoji: "🌟",
+    user: "ArtEnthusiast",
+    quantity: "2",
+    token: "CloneX #2345",
+    marketCap: "$200K",
+    replies: "6",
+  },
+  {
+    emoji: "🎭",
+    user: "MetaverseFan",
+    quantity: "1",
+    token: "Otherdeed #7890",
+    marketCap: "$110K",
+    replies: "9",
+  },
+  {
+    emoji: "💎",
+    user: "CryptoArtLover",
+    quantity: "4",
+    token: "PudgyPenguins #4567",
+    marketCap: "$70K",
+    replies: "4",
+  },
+  {
+    emoji: "🚀",
+    user: "NFTInvestor",
+    quantity: "2",
+    token: "CoolCats #8901",
+    marketCap: "$130K",
+    replies: "2",
+  },
+  {
+    emoji: "💡",
+    user: "DigitalPioneer",
+    quantity: "3",
+    token: "World of Women #5678",
+    marketCap: "$160K",
+    replies: "11",
+  },
+  {
+    emoji: "🌌",
+    user: "NFTExplorer",
+    quantity: "1",
+    token: "Bored Ape Kennel Club #9012",
+    marketCap: "$100K",
+    replies: "1",
+  },
+  {
+    emoji: "🎉",
+    user: "ArtInnovator",
+    quantity: "5",
+    token: "Mutant Ape Yacht Club #2345",
+    marketCap: "$140K",
+    replies: "8",
+  },
+  {
+    emoji: "🎈",
+    user: "NFTVisionary",
+    quantity: "2",
+    token: "Meebits #7890",
+    marketCap: "$180K",
+    replies: "5",
+  },
+  {
+    emoji: "🎁",
+    user: "CryptoArtCollector",
+    quantity: "3",
+    token: "VeeFriends #4567",
+    marketCap: "$95K",
+    replies: "3",
+  },
+  {
+    emoji: "🎊",
+    user: "NFTEnthusiast",
+    quantity: "1",
+    token: "CyberKongz #8901",
+    marketCap: "$125K",
+    replies: "10",
+  },
+];
+
+const AnnouncementBar = ({ data, onClick }: { data: any[], onClick?: () => void }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % tokenData.length);
-    }, 3000);
+      setCurrentIndex((prev) => (prev + 1) % data.length);
+    }, 2500);
 
     return () => clearInterval(interval);
-  }, [tokenData.length]);
+  }, [data.length]);
 
-  const data = tokenData[currentIndex];
+  const currentData = data[currentIndex];
 
   return (
-    <div className="announcement-bar shake-flash">
+    <div className="announcement-bar cursor-pointer" onClick={onClick}>
       <div className="announcement-content">
-        <span className="emoji">{data.emoji}</span>
-        <span className="user">{data.user}</span> bought
-        <span className="quantity">{data.quantity}</span> of
-        <span className="token">{data.token}</span>
-        <span className="market-cap">market cap: {data.marketCap}</span>
-        <span className="replies">replies: {data.replies}</span>
+        <span className="emoji">{currentData.emoji}</span>
+        <span className="user">{currentData.user}</span> {t('activity.action')}
+        <span className="quantity">{currentData.quantity}</span> {t('common.of')}
+        <span className="token">{currentData.token}</span>
+        <span className="market-cap">{t('common.marketCap')}: {currentData.marketCap}</span>
+        <span className="replies">{t('common.replies')}: {currentData.replies}</span>
       </div>
     </div>
   );
@@ -98,10 +353,10 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   const location = useLocation();
   const { theme, setTheme } = useTheme();
   const { t, i18n } = useTranslation();
-  const isActive = (path: string) => location.pathname === path;
-
   const [mounted, setMounted] = useState(false);
   const [showWalletModal, setShowWalletModal] = useState(false);
+  const [showFilterModal, setShowFilterModal] = useState(false);
+  const [mobileBarType, setMobileBarType] = useState<'transactions' | 'mints'>('transactions');
 
   useEffect(() => {
     setMounted(true);
@@ -111,13 +366,31 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     i18n.changeLanguage(value);
   };
 
-  if (!mounted) return null;
+  const isActive = (path: string) => {
+    return location.pathname === path;
+  };
+
+  const toggleMobileBar = () => {
+    setMobileBarType(prev => prev === 'transactions' ? 'mints' : 'transactions');
+  };
 
   return (
     <div className="min-h-screen bg-background">
+      <div className="hidden md:grid grid-cols-2 gap-4 px-4 py-2 bg-primary/5">
+        <AnnouncementBar data={transactionData} />
+        <AnnouncementBar data={mintData} />
+      </div>
+      
+      <div className="block md:hidden px-4 py-2 bg-primary/5">
+        <AnnouncementBar 
+          data={mobileBarType === 'transactions' ? transactionData : mintData}
+          onClick={toggleMobileBar}
+        />
+      </div>
+
       <header className="border-b bg-background/80 backdrop-blur-lg sticky top-0 z-50">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-3 items-center h-16">
+          <div className="flex items-center justify-between h-16">
             <Sheet>
               <SheetTrigger asChild>
                 <Avatar className="h-8 w-8 cursor-pointer">
@@ -176,9 +449,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
               </SheetContent>
             </Sheet>
 
-            <span className="text-2xl font-bold justify-self-center">𝓟</span>
+            <span className="text-2xl font-bold absolute left-1/2 transform -translate-x-1/2">𝓟</span>
 
-            <div className="flex items-center gap-2 justify-self-end">
+            <div className="flex items-center gap-2">
               <Dialog>
                 <DialogTrigger asChild>
                   <Button variant="ghost" size="icon">
@@ -187,17 +460,17 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[425px] rounded-3xl bg-background/95 backdrop-blur-sm">
                   <DialogHeader>
-                    <DialogTitle>Global preferences</DialogTitle>
+                    <DialogTitle>{t('settings.preferences')}</DialogTitle>
                   </DialogHeader>
                   <div className="space-y-4 py-4">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         {theme === "dark" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
-                        <span>Theme</span>
+                        <span>{t('settings.theme')}</span>
                       </div>
                       <Select onValueChange={setTheme} defaultValue={theme}>
                         <SelectTrigger className="w-[100px] bg-background">
-                          <SelectValue placeholder="Theme" />
+                          <SelectValue placeholder={t('settings.theme')} />
                         </SelectTrigger>
                         <SelectContent className="bg-background border border-border">
                           <SelectItem value="light">Light</SelectItem>
@@ -209,26 +482,34 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <Languages className="h-4 w-4" />
-                        <span>Language</span>
+                        <span>{t('settings.language')}</span>
                       </div>
                       <Select defaultValue={i18n.language} onValueChange={handleLanguageChange}>
                         <SelectTrigger className="w-[100px] bg-background">
-                          <SelectValue placeholder="Language" />
+                          <SelectValue placeholder={t('settings.language')} />
                         </SelectTrigger>
                         <SelectContent className="bg-background border border-border">
                           <SelectItem value="en">English</SelectItem>
                           <SelectItem value="es">Español</SelectItem>
+                          <SelectItem value="zh">中文</SelectItem>
+                          <SelectItem value="hi">हिंदी</SelectItem>
+                          <SelectItem value="ar">العربية</SelectItem>
+                          <SelectItem value="pt">Português</SelectItem>
+                          <SelectItem value="bn">বাংলা</SelectItem>
+                          <SelectItem value="ru">Русский</SelectItem>
+                          <SelectItem value="fr">Français</SelectItem>
+                          <SelectItem value="de">Deutsch</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <Wallet className="h-4 w-4" />
-                        <span>Currency</span>
+                        <span>{t('settings.currency')}</span>
                       </div>
                       <Select defaultValue="USD">
                         <SelectTrigger className="w-[100px]">
-                          <SelectValue placeholder="Currency" />
+                          <SelectValue placeholder={t('settings.currency')} />
                         </SelectTrigger>
                         <SelectContent className="bg-background border border-border">
                           {CURRENCIES.map((currency) => (
@@ -259,9 +540,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                         variant="outline"
                         className="w-full justify-between bg-[#1c1c1c] hover:bg-[#2a2a2a] border-[#2a2a2a] h-[60px] rounded-2xl"
                         onClick={() => {
-                          const connectButton = document.querySelector('w3m-connect-button');
+                          const connectButton = document.querySelector('#w3m-connect-button');
                           if (connectButton) {
-                            (connectButton as any).click();
+                            (connectButton as HTMLElement).click();
                           }
                         }}
                       >
@@ -276,9 +557,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                         variant="outline"
                         className="w-full justify-between bg-[#1c1c1c] hover:bg-[#2a2a2a] border-[#2a2a2a] h-[60px] rounded-2xl"
                         onClick={() => {
-                          const walletButton = document.querySelector('w3m-connect-button');
-                          if (walletButton) {
-                            (walletButton as any).click();
+                          const connectButton = document.querySelector('#w3m-connect-button');
+                          if (connectButton) {
+                            (connectButton as HTMLElement).click();
                           }
                         }}
                       >
@@ -306,9 +587,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                         variant="outline"
                         className="w-full justify-between bg-[#1c1c1c] hover:bg-[#2a2a2a] border-[#2a2a2a] h-[60px] rounded-2xl"
                         onClick={() => {
-                          const walletButton = document.querySelector('w3m-connect-button');
-                          if (walletButton) {
-                            (walletButton as any).click();
+                          const connectButton = document.querySelector('#w3m-connect-button');
+                          if (connectButton) {
+                            (connectButton as HTMLElement).click();
                           }
                         }}
                       >
@@ -323,9 +604,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                         variant="outline"
                         className="w-full justify-between bg-[#1c1c1c] hover:bg-[#2a2a2a] border-[#2a2a2a] h-[60px] rounded-2xl"
                         onClick={() => {
-                          const walletButton = document.querySelector('w3m-connect-button');
-                          if (walletButton) {
-                            (walletButton as any).click();
+                          const connectButton = document.querySelector('#w3m-connect-button');
+                          if (connectButton) {
+                            (connectButton as HTMLElement).click();
                           }
                         }}
                       >
@@ -340,9 +621,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                         variant="outline"
                         className="w-full justify-between bg-[#1c1c1c] hover:bg-[#2a2a2a] border-[#2a2a2a] h-[60px] rounded-2xl"
                         onClick={() => {
-                          const walletButton = document.querySelector('w3m-connect-button');
-                          if (walletButton) {
-                            (walletButton as any).click();
+                          const connectButton = document.querySelector('#w3m-connect-button');
+                          if (connectButton) {
+                            (connectButton as HTMLElement).click();
                           }
                         }}
                       >
@@ -360,9 +641,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                   </div>
 
                   <div className="hidden">
-                    <w3m-button />
-                    <w3m-connect-button />
-                    <w3m-network-button />
+                    <div id="w3m-button"></div>
+                    <div id="w3m-connect-button"></div>
+                    <div id="w3m-network-button"></div>
                   </div>
                 </DialogContent>
               </Dialog>
@@ -370,28 +651,65 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           </div>
         </div>
 
-        <div className="hidden md:grid grid-cols-2 gap-4 px-4 py-2 bg-primary/5">
-          <AnnouncementBar tokenData={tokenData} />
-          <AnnouncementBar tokenData={[...tokenData].reverse()} />
-        </div>
-        
-        <div className="block md:hidden px-4 py-2 bg-primary/5">
-          <AnnouncementBar tokenData={tokenData} />
-        </div>
-
         <div className="border-t">
           <div className="container mx-auto px-4">
             <div className="flex items-center justify-between py-2">
-              <Select defaultValue="trending">
-                <SelectTrigger className="w-[140px]">
-                  <SelectValue placeholder={t('common.filterBy')} />
-                </SelectTrigger>
-                <SelectContent className="bg-background border border-border">
-                  <SelectItem value="trending">{t('filters.trending')}</SelectItem>
-                  <SelectItem value="latest">{t('filters.latest')}</SelectItem>
-                  <SelectItem value="top">{t('filters.topRated')}</SelectItem>
-                </SelectContent>
-              </Select>
+              <div className="flex items-center gap-4">
+                <Dialog open={showFilterModal} onOpenChange={setShowFilterModal}>
+                  <DialogTrigger asChild>
+                    <Button variant="ghost" size="icon">
+                      <SlidersHorizontal className="h-5 w-5" />
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle>{t('filters.title')}</DialogTitle>
+                    </DialogHeader>
+                    <div className="space-y-4 py-4">
+                      <div className="space-y-2">
+                        <h3 className="text-sm font-medium">{t('filters.marketCap')}</h3>
+                        <Select>
+                          <SelectTrigger>
+                            <SelectValue placeholder={t('filters.selectRange')} />
+                          </SelectTrigger>
+                          <SelectContent className="bg-background border border-border">
+                            <SelectItem value="all">{t('filters.all')}</SelectItem>
+                            <SelectItem value="under5k">{t('filters.under')} $5K</SelectItem>
+                            <SelectItem value="5kTo20k">$5K - $20K</SelectItem>
+                            <SelectItem value="over20k">{t('filters.over')} $20K</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <div className="space-y-2">
+                        <h3 className="text-sm font-medium">{t('filters.activity')}</h3>
+                        <Select>
+                          <SelectTrigger>
+                            <SelectValue placeholder={t('filters.selectActivity')} />
+                          </SelectTrigger>
+                          <SelectContent className="bg-background border border-border">
+                            <SelectItem value="all">{t('filters.all')}</SelectItem>
+                            <SelectItem value="high">{t('filters.highActivity')}</SelectItem>
+                            <SelectItem value="medium">{t('filters.mediumActivity')}</SelectItem>
+                            <SelectItem value="low">{t('filters.lowActivity')}</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </div>
+                  </DialogContent>
+                </Dialog>
+
+                <Select defaultValue="trending">
+                  <SelectTrigger className="w-[140px]">
+                    <SelectValue placeholder={t('common.filterBy')} />
+                  </SelectTrigger>
+                  <SelectContent className="bg-background border border-border">
+                    <SelectItem value="trending">{t('filters.trending')}</SelectItem>
+                    <SelectItem value="latest">{t('filters.latest')}</SelectItem>
+                    <SelectItem value="top">{t('filters.topRated')}</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
               <div className="text-sm text-muted-foreground">
                 {t('common.currentLanguage')}: {i18n.language.toUpperCase()}
               </div>
