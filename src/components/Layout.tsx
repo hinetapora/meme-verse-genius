@@ -46,25 +46,20 @@ import {
 } from "@/components/ui/select";
 import { useState, useEffect } from "react";
 
-const LANGUAGES = [
-  { code: "en", label: "English" },
-  { code: "es", label: "Español" },
-  { code: "zh", label: "中文" },
-  { code: "hi", label: "हिंदी" },
-  { code: "ar", label: "العربية" },
-  { code: "pt", label: "Português" },
-  { code: "bn", label: "বাংলা" },
-  { code: "ru", label: "Русский" },
-  { code: "fr", label: "Français" },
-  { code: "de", label: "Deutsch" }
+const drawerLinks = [
+  { path: "/profile", icon: User, label: "Profile" },
+  { path: "/premium", icon: Crown, label: "Premium" },
+  { path: "/communities", icon: Users, label: "Communities" },
+  { path: "/bookmarks", icon: Bookmark, label: "Bookmarks" },
+  { path: "/jobs", icon: Briefcase, label: "Jobs" },
+  { path: "/lists", icon: List, label: "Lists" },
+  { path: "/spaces", icon: Hash, label: "Spaces" },
+  { path: "/monetization", icon: DollarSign, label: "Monetization" },
 ];
 
-const CURRENCIES = [
-  { code: "USD", symbol: "$" },
-  { code: "EUR", symbol: "€" },
-  { code: "GBP", symbol: "£" },
-  { code: "JPY", symbol: "¥" },
-  { code: "CNY", symbol: "¥" }
+const bottomDrawerLinks = [
+  { path: "/settings", icon: Settings, label: "Settings and privacy" },
+  { path: "/help", icon: HelpCircle, label: "Help Center" },
 ];
 
 const transactionData = [

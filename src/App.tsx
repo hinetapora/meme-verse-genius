@@ -20,8 +20,11 @@ const metadata = {
 
 const chains = [mainnet, arbitrum]
 const wagmiConfig = defaultWagmiConfig({ chains, projectId, metadata })
+
+// Create a new QueryClient instance
 const queryClient = new QueryClient()
 
+// 3. Create modal
 createWeb3Modal({ wagmiConfig, projectId, chains })
 
 function App() {
