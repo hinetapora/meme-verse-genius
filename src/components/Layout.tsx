@@ -1,3 +1,4 @@
+
 import { 
   Home, 
   Search, 
@@ -106,6 +107,10 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
   const handleLanguageChange = (value: string) => {
     i18n.changeLanguage(value);
+  };
+
+  const isActive = (path: string) => {
+    return location.pathname === path;
   };
 
   const tokenData = [

@@ -20,17 +20,19 @@ const metadata = {
   icons: ['https://avatars.githubusercontent.com/u/37784886']
 }
 
-const queryClient = new QueryClient();
 const chains = [mainnet, arbitrum]
 const wagmiConfig = defaultWagmiConfig({ chains, projectId, metadata })
+
+// Create a new QueryClient instance
+const queryClient = new QueryClient()
 
 // 3. Create modal
 createWeb3Modal({ wagmiConfig, projectId, chains })
 
 function App() {
   return (
-    <WagmiConfig config={wagmiConfig}>
-      <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
+      <WagmiConfig config={wagmiConfig}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <Router>
             <Routes>
@@ -40,8 +42,8 @@ function App() {
           </Router>
           <Toaster />
         </ThemeProvider>
-      </QueryClientProvider>
-    </WagmiConfig>
+      </WagmiConfig>
+    </QueryClientProvider>
   );
 }
 
