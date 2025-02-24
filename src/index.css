@@ -1,11 +1,10 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 98%;
+    --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
@@ -60,7 +59,7 @@
   }
 
   * {
-    @apply border-border antialiased;
+    @apply border-border;
   }
 
   body {
@@ -104,11 +103,22 @@
 }
 
 @keyframes shake-flash {
-  0% { transform: translateX(0); background-color: rgba(255, 182, 193, 0.1); }
-  25% { transform: translateX(5px); background-color: rgba(173, 216, 230, 0.1); }
-  50% { transform: translateX(-5px); background-color: rgba(144, 238, 144, 0.1); }
-  75% { transform: translateX(5px); background-color: rgba(255, 182, 193, 0.1); }
-  100% { transform: translateX(0); background-color: rgba(173, 216, 230, 0.1); }
+  0%, 100% {
+    transform: translateX(0);
+    background-color: rgba(155, 135, 245, 0.1);
+  }
+  25% {
+    transform: translateX(5px);
+    background-color: rgba(126, 105, 171, 0.1);
+  }
+  50% {
+    transform: translateX(-5px);
+    background-color: rgba(217, 70, 239, 0.1);
+  }
+  75% {
+    transform: translateX(5px);
+    background-color: rgba(249, 115, 22, 0.1);
+  }
 }
 
 @keyframes flash {
@@ -124,8 +134,7 @@
 
 .announcement-bar {
   @apply px-3 py-2 rounded-lg text-sm font-medium;
-  animation: flash var(--flash-duration) linear infinite,
-             wobble var(--shake-duration) ease-in-out infinite;
+  animation: shake-flash 2.5s ease-in-out infinite;
 }
 
 .announcement-content {
