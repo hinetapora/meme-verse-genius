@@ -430,7 +430,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                         className="flex items-center gap-3 text-lg hover:bg-accent px-2 py-2 rounded-md"
                       >
                         <link.icon className="h-6 w-6" />
-                        {link.label}
+                        {t(`nav.${link.label.toLowerCase()}`)}
                       </Link>
                     ))}
                     <div className="border-t my-4" />
@@ -441,7 +441,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                         className="flex items-center gap-3 text-lg hover:bg-accent px-2 py-2 rounded-md"
                       >
                         <link.icon className="h-6 w-6" />
-                        {link.label}
+                        {t(`nav.${link.label.toLowerCase()}`)}
                       </Link>
                     ))}
                   </nav>
@@ -527,7 +527,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
               <Dialog open={showWalletModal} onOpenChange={setShowWalletModal}>
                 <DialogTrigger asChild>
                   <Button variant="outline" size="sm" className="text-xs px-3 py-1">
-                    Connect
+                    {t('common.connect')}
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[425px] rounded-3xl bg-[#1c1c1c]/95 backdrop-blur-sm p-0">
@@ -655,49 +655,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           <div className="container mx-auto px-4">
             <div className="flex items-center justify-between py-2">
               <div className="flex items-center gap-4">
-                <Dialog open={showFilterModal} onOpenChange={setShowFilterModal}>
-                  <DialogTrigger asChild>
-                    <Button variant="ghost" size="icon">
-                      <SlidersHorizontal className="h-5 w-5" />
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent>
-                    <DialogHeader>
-                      <DialogTitle>{t('filters.title')}</DialogTitle>
-                    </DialogHeader>
-                    <div className="space-y-4 py-4">
-                      <div className="space-y-2">
-                        <h3 className="text-sm font-medium">{t('filters.marketCap')}</h3>
-                        <Select>
-                          <SelectTrigger>
-                            <SelectValue placeholder={t('filters.selectRange')} />
-                          </SelectTrigger>
-                          <SelectContent className="bg-background border border-border">
-                            <SelectItem value="all">{t('filters.all')}</SelectItem>
-                            <SelectItem value="under5k">{t('filters.under')} $5K</SelectItem>
-                            <SelectItem value="5kTo20k">$5K - $20K</SelectItem>
-                            <SelectItem value="over20k">{t('filters.over')} $20K</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                      <div className="space-y-2">
-                        <h3 className="text-sm font-medium">{t('filters.activity')}</h3>
-                        <Select>
-                          <SelectTrigger>
-                            <SelectValue placeholder={t('filters.selectActivity')} />
-                          </SelectTrigger>
-                          <SelectContent className="bg-background border border-border">
-                            <SelectItem value="all">{t('filters.all')}</SelectItem>
-                            <SelectItem value="high">{t('filters.highActivity')}</SelectItem>
-                            <SelectItem value="medium">{t('filters.mediumActivity')}</SelectItem>
-                            <SelectItem value="low">{t('filters.lowActivity')}</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                    </div>
-                  </DialogContent>
-                </Dialog>
-
+                <Button variant="ghost" size="icon" onClick={() => setShowFilterModal(true)}>
+                  <SlidersHorizontal className="h-5 w-5" />
+                </Button>
                 <Select defaultValue="trending">
                   <SelectTrigger className="w-[140px]">
                     <SelectValue placeholder={t('common.filterBy')} />

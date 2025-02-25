@@ -30,7 +30,8 @@
     "marketCap": "market cap",
     "replies": "replies",
     "filterBy": "Filter by",
-    "currentLanguage": "Language"
+    "currentLanguage": "Language",
+    "connect": "Connect"
   },
   "filters": {
     "title": "Filters",
