@@ -1,4 +1,13 @@
-import { 
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { useTheme } from "next-themes";
+import { useTranslation } from 'react-i18next';
+import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import FilterDialog from "./FilterDialog";
+import {
   Home, 
   Search, 
   Brain, 
@@ -23,28 +32,6 @@ import {
   HelpCircle,
   SlidersHorizontal
 } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useTheme } from "next-themes";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { useTranslation } from 'react-i18next';
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { useState, useEffect } from "react";
 
 const CURRENCIES = [
   { code: "USD", name: "US Dollar" },

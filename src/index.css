@@ -1,29 +1,10 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 98%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 252 84% 74%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 252 84% 74%;
-    --radius: 1rem;
     --light-green: #90ee90;
     --medium-green: #32cd32;
     --light-blue: #add8e6;
@@ -34,38 +15,31 @@
     --shake-duration: 0.8s;
     --flash-duration: 0.6s;
     --announcement-bg-color: #ffff00;
+    --normal-yellow: #ffff00;
   }
 
   .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 252 84% 74%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 252 84% 74%;
+    --light-green: rgba(144, 238, 144, 0.2);
+    --medium-green: rgba(50, 205, 50, 0.2);
+    --light-blue: rgba(173, 216, 230, 0.2);
+    --light-red: rgba(240, 128, 128, 0.2);
+    --pink: rgba(255, 105, 180, 0.2);
+    --medium-yellow: rgba(255, 204, 0, 0.2);
+    --bright-yellow: rgba(255, 215, 0, 0.2);
+    --announcement-bg-color: rgba(255, 255, 0, 0.1);
+    --normal-yellow: rgba(255, 255, 0, 0.1);
   }
+}
 
-  * {
-    @apply border-border antialiased;
-  }
-
-  body {
-    @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
-  }
+@keyframes flash {
+  0% { background-color: var(--normal-yellow); }
+  14% { background-color: var(--light-green); }
+  28% { background-color: var(--medium-green); }
+  42% { background-color: var(--light-blue); }
+  57% { background-color: var(--light-red); }
+  71% { background-color: var(--pink); }
+  85% { background-color: var(--medium-yellow); }
+  100% { background-color: var(--bright-yellow); }
 }
 
 @keyframes wobble {
@@ -82,84 +56,17 @@
   100% { transform: translateX(0); }
 }
 
-.animate-wobble {
-  animation: wobble 0.8s ease-in-out;
-}
-
-.glass-card {
-  @apply bg-white/50 backdrop-blur-sm border border-white/20 shadow-lg;
-}
-
-.hover-scale {
-  @apply transition-transform duration-200 hover:scale-105;
-}
-
-.fade-in {
-  @apply animate-fade-in;
-}
-
-.slide-up {
-  @apply animate-fade-up;
-}
-
-@keyframes shake-flash {
-  0% { transform: translateX(0); background-color: rgba(255, 182, 193, 0.1); }
-  25% { transform: translateX(5px); background-color: rgba(173, 216, 230, 0.1); }
-  50% { transform: translateX(-5px); background-color: rgba(144, 238, 144, 0.1); }
-  75% { transform: translateX(5px); background-color: rgba(255, 182, 193, 0.1); }
-  100% { transform: translateX(0); background-color: rgba(173, 216, 230, 0.1); }
-}
-
-@keyframes shake-flash-1 {
-  0% { transform: translateX(0); background-color: rgba(255, 182, 193, 0.1); }
-  25% { transform: translateX(5px); background-color: rgba(173, 216, 230, 0.1); }
-  50% { transform: translateX(-5px); background-color: rgba(144, 238, 144, 0.1); }
-  75% { transform: translateX(5px); background-color: rgba(255, 182, 193, 0.1); }
-  100% { transform: translateX(0); background-color: rgba(173, 216, 230, 0.1); }
-}
-
-@keyframes shake-flash-2 {
-  0% { transform: translateX(0); background-color: rgba(144, 238, 144, 0.1); }
-  25% { transform: translateX(-5px); background-color: rgba(255, 182, 193, 0.1); }
-  50% { transform: translateX(5px); background-color: rgba(173, 216, 230, 0.1); }
-  75% { transform: translateX(-5px); background-color: rgba(144, 238, 144, 0.1); }
-  100% { transform: translateX(0); background-color: rgba(255, 182, 193, 0.1); }
-}
-
-.announcement-bar-1 {
-  @apply px-3 py-2 rounded-lg text-sm font-medium;
-  animation: shake-flash-1 4s linear infinite;
-}
-
-.announcement-bar-2 {
-  @apply px-3 py-2 rounded-lg text-sm font-medium;
-  animation: shake-flash-2 4s linear infinite;
-}
-
 .announcement-bar {
   @apply px-3 py-2 rounded-lg text-sm font-medium;
-  animation: wobble var(--shake-duration) ease-in-out infinite,
-             shake-flash var(--flash-duration) linear infinite;
+  animation: flash var(--flash-duration) linear infinite,
+             wobble var(--shake-duration) ease-in-out infinite;
 }
 
-.announcement-content {
-  @apply flex items-center gap-2 overflow-hidden;
-}
-
-.announcement-content span {
-  @apply whitespace-nowrap;
-}
-
-.announcement-content .emoji {
-  @apply text-lg;
-}
-
-.announcement-content .user,
-.announcement-content .token {
-  @apply font-semibold;
-}
-
-.announcement-content .market-cap,
-.announcement-content .replies {
-  @apply text-muted-foreground text-xs;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
