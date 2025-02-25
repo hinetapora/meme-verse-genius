@@ -8,6 +8,20 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import FilterDialog from "./FilterDialog";
 import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
   Home, 
   Search, 
   Brain, 
@@ -32,19 +46,6 @@ import {
   HelpCircle,
   SlidersHorizontal
 } from "lucide-react";
-
-const CURRENCIES = [
-  { code: "USD", name: "US Dollar" },
-  { code: "EUR", name: "Euro" },
-  { code: "GBP", name: "British Pound" },
-  { code: "JPY", name: "Japanese Yen" },
-  { code: "CNY", name: "Chinese Yuan" },
-  { code: "KRW", name: "Korean Won" },
-  { code: "INR", name: "Indian Rupee" },
-  { code: "BRL", name: "Brazilian Real" },
-  { code: "AUD", name: "Australian Dollar" },
-  { code: "CAD", name: "Canadian Dollar" }
-];
 
 const drawerLinks = [
   { path: "/profile", icon: User, label: "Profile" },
