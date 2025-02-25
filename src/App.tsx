@@ -19,7 +19,7 @@ const metadata = {
 }
 
 const chains = [mainnet, arbitrum]
-const wagmiConfig = defaultWagmiConfig({ chains, projectId, metadata })
+const wagmiConfig = defaultWagmiConfig({ chains, projectId, metadata }) as any;
 
 // Create a new QueryClient instance with default options
 const queryClient = new QueryClient({
