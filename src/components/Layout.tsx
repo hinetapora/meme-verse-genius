@@ -1,5 +1,7 @@
+
 import { useState } from "react";
 import { useTranslation } from 'react-i18next';
+import i18n from '@/i18n'; // Add this import
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import FilterDialog from "./FilterDialog";
