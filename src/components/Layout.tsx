@@ -7,9 +7,6 @@ import FilterDialog from "./FilterDialog";
 import {
   Dialog,
   DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import { ChevronRight, SlidersHorizontal } from "lucide-react";
 import { AnnouncementBar } from "./announcement/AnnouncementBar";
@@ -283,7 +280,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="min-h-screen bg-background">
       <div className="hidden md:grid grid-cols-2 gap-4 px-4 py-2 bg-primary/5">
-        <div className="rounded-lg overflow-hidden">
+        <div className="rounded-lg overflow-hidden transition-all duration-300">
           <AnnouncementBar data={transactionData} />
         </div>
         <div className="rounded-lg overflow-hidden">
@@ -300,7 +297,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         </div>
       </div>
 
-      <header className="border-b bg-background sticky top-0 z-50">
+      <header className="border-b bg-background/95 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             <NavigationDrawer />
@@ -308,11 +305,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             <div className="flex items-center gap-2">
               <SettingsDialog />
               <Dialog open={showWalletModal} onOpenChange={setShowWalletModal}>
-                <DialogTrigger asChild>
-                  <Button variant="outline" size="sm" className="text-xs px-3 py-1">
-                    {t('common.connect')}
-                  </Button>
-                </DialogTrigger>
+                <Button variant="outline" size="sm" className="text-xs px-3 py-1" onClick={() => setShowWalletModal(true)}>
+                  {t('common.connect')}
+                </Button>
                 <DialogContent className="sm:max-w-[425px] rounded-3xl bg-background border-0">
                   <div className="p-6 space-y-6">
                     <div className="text-center space-y-2">
@@ -428,7 +423,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                   <SlidersHorizontal className="h-5 w-5" />
                 </Button>
                 <Select defaultValue="trending">
-                  <SelectTrigger className="w-[140px]">
+                  <SelectTrigger className="w-[140px] bg-background">
                     <SelectValue placeholder={t('filters.selectRange')} />
                   </SelectTrigger>
                   <SelectContent className="bg-background border border-border">
@@ -446,7 +441,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-6 animate-fade-in">
+      <main className="container mx-auto px-4 py-6">
         {children}
       </main>
 
