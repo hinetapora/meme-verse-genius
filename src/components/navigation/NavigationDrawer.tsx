@@ -92,15 +92,12 @@ export const NavigationDrawer = () => {
             ))}
             <div className="border-t my-4" />
             {bottomDrawerLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className="flex items-center gap-3 text-lg hover:bg-accent px-2 py-2 rounded-md"
-              >
-                <link.icon className="h-6 w-6" />
-                {t(`nav.${link.label.toLowerCase()}`)}
-              </Link>
-            ))}
+  <Link key={link.path} to={link.path} ...>
+    <link.icon className="h-6 w-6" />
+    {t(`nav.${link.i18nKey}`)}
+  </Link>
+))}
+
           </nav>
         </div>
       </SheetContent>
