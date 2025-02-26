@@ -28,9 +28,20 @@ const drawerLinks = [
 ];
 
 const bottomDrawerLinks = [
-  { path: "/settings", icon: Settings, label: "settings" },
-  { path: "/help", icon: HelpCircle, label: "help" },
+  {
+    path: "/settings",
+    icon: Settings,
+    label: "Settings and privacy",
+    i18nKey: "settings", // This matches 'nav.settings' in your translation
+  },
+  {
+    path: "/help",
+    icon: HelpCircle,
+    label: "Help Center",
+    i18nKey: "help",     // This matches 'nav.help' in your translation
+  },
 ];
+
 
 
 export const NavigationDrawer = () => {
