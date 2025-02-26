@@ -28,9 +28,10 @@ const drawerLinks = [
 ];
 
 const bottomDrawerLinks = [
-  { path: "/settings", icon: Settings, label: "Settings and privacy" },
-  { path: "/help", icon: HelpCircle, label: "Help Center" },
+  { path: "/settings", icon: Settings, label: "settings" },
+  { path: "/help", icon: HelpCircle, label: "help" },
 ];
+
 
 export const NavigationDrawer = () => {
   const { t } = useTranslation();
