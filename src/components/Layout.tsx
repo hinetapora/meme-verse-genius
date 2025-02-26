@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useTranslation } from 'react-i18next';
 import i18n from '@/i18n';
@@ -281,16 +282,16 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="min-h-screen bg-background">
       <div className="hidden md:grid grid-cols-2 gap-4 px-4 py-2 bg-primary/5">
-        <div className="rounded-lg overflow-hidden">
+        <div className="rounded-2xl overflow-hidden transition-all duration-300">
           <AnnouncementBar data={transactionData} />
         </div>
-        <div className="rounded-lg overflow-hidden">
+        <div className="rounded-2xl overflow-hidden">
           <AnnouncementBar data={mintData} />
         </div>
       </div>
       
       <div className="block md:hidden px-4 py-2 bg-primary/5">
-        <div className="rounded-lg overflow-hidden">
+        <div className="rounded-2xl overflow-hidden">
           <AnnouncementBar 
             data={mobileBarType === 'transactions' ? transactionData : mintData}
             onClick={toggleMobileBar}
@@ -306,13 +307,15 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             <div className="flex items-center gap-2">
               <SettingsDialog />
               <Dialog open={showWalletModal} onOpenChange={setShowWalletModal}>
-                <Button variant="outline" size="sm" className="text-xs px-3 py-1" onClick={() => setShowWalletModal(true)}>
-                  {t('common.connect')}
-                </Button>
-                <DialogContent className="sm:max-w-[425px] rounded-3xl bg-background border-0">
+                <DialogTrigger asChild>
+                  <Button variant="outline" size="sm" className="text-xs px-3 py-1">
+                    {t('common.connect')}
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[425px] rounded-3xl bg-background">
                   <div className="p-6 space-y-6">
                     <div className="text-center space-y-2">
-                      <img src="/trust.svg" alt="RUGTRON" className="w-16 h-16 mx-auto" />
+                      <span className="text-4xl font-bold">𝓡</span>
                       <h2 className="text-xl font-semibold">CONNECT WITH RUGTRON</h2>
                     </div>
                     
@@ -424,10 +427,10 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                   <SlidersHorizontal className="h-5 w-5" />
                 </Button>
                 <Select defaultValue="trending">
-                  <SelectTrigger className="w-[140px] bg-background">
+                  <SelectTrigger className="w-[140px]">
                     <SelectValue placeholder={t('filters.selectRange')} />
                   </SelectTrigger>
-                  <SelectContent className="bg-background border border-border">
+                  <SelectContent>
                     <SelectItem value="trending">{t('filters.trending')}</SelectItem>
                     <SelectItem value="latest">{t('filters.latest')}</SelectItem>
                     <SelectItem value="top">{t('filters.topRated')}</SelectItem>
@@ -442,7 +445,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-6 animate-fade-in">
+      <main className="container mx-auto px-4 py-6">
         {children}
       </main>
 
