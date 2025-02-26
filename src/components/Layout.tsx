@@ -11,11 +11,18 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { ChevronRight, Filter } from "lucide-react";
+import { ChevronRight, SlidersHorizontal } from "lucide-react";
 import { AnnouncementBar } from "./announcement/AnnouncementBar";
 import { NavigationDrawer } from "./navigation/NavigationDrawer";
 import { BottomNavigation } from "./navigation/BottomNavigation";
 import { SettingsDialog } from "./settings/SettingsDialog";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const transactionData = [
   {
@@ -276,18 +283,24 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="min-h-screen bg-background">
       <div className="hidden md:grid grid-cols-2 gap-4 px-4 py-2 bg-primary/5">
-        <AnnouncementBar data={transactionData} />
-        <AnnouncementBar data={mintData} />
+        <div className="rounded-lg overflow-hidden">
+          <AnnouncementBar data={transactionData} />
+        </div>
+        <div className="rounded-lg overflow-hidden">
+          <AnnouncementBar data={mintData} />
+        </div>
       </div>
       
       <div className="block md:hidden px-4 py-2 bg-primary/5">
-        <AnnouncementBar 
-          data={mobileBarType === 'transactions' ? transactionData : mintData}
-          onClick={toggleMobileBar}
-        />
+        <div className="rounded-lg overflow-hidden">
+          <AnnouncementBar 
+            data={mobileBarType === 'transactions' ? transactionData : mintData}
+            onClick={toggleMobileBar}
+          />
+        </div>
       </div>
 
-      <header className="border-b bg-background/80 backdrop-blur-lg sticky top-0 z-50">
+      <header className="border-b bg-background sticky top-0 z-50">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             <NavigationDrawer />
@@ -303,20 +316,25 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 <DialogContent className="sm:max-w-[425px] rounded-3xl bg-background border-0">
                   <div className="p-6 space-y-6">
                     <div className="text-center space-y-2">
-                      <img src="/rugtron-logo.svg" alt="RUGTRON" className="w-16 h-16 mx-auto" />
+                      <img src="/trust.svg" alt="RUGTRON" className="w-16 h-16 mx-auto" />
                       <h2 className="text-xl font-semibold">CONNECT WITH RUGTRON</h2>
                     </div>
                     
-                    <div className="space-y-3">
+                    <div className="space-y-4">
                       <Button
                         variant="outline"
                         className="w-full justify-between bg-background hover:bg-accent border-border h-[60px] rounded-2xl"
-                        onClick={() => {
-                          const connectButton = document.querySelector('#w3m-connect-button');
-                          if (connectButton) {
-                            (connectButton as HTMLElement).click();
-                          }
-                        }}
+                      >
+                        <div className="flex items-center gap-3">
+                          <img src="/base.svg" alt="Base" className="w-8 h-8" />
+                          <span className="text-base font-normal">Base</span>
+                        </div>
+                        <ChevronRight className="h-5 w-5 text-muted-foreground" />
+                      </Button>
+
+                      <Button
+                        variant="outline"
+                        className="w-full justify-between bg-background hover:bg-accent border-border h-[60px] rounded-2xl"
                       >
                         <div className="flex items-center gap-3">
                           <img src="/walletconnect.svg" alt="WalletConnect" className="w-8 h-8" />
@@ -337,18 +355,34 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                       <Button
                         variant="outline"
                         className="w-full justify-between bg-background hover:bg-accent border-border h-[60px] rounded-2xl"
-                        onClick={() => {
-                          const connectButton = document.querySelector('#w3m-connect-button');
-                          if (connectButton) {
-                            (connectButton as HTMLElement).click();
-                          }
-                        }}
                       >
                         <div className="flex items-center gap-3">
                           <img src="/metamask.svg" alt="MetaMask" className="w-8 h-8" />
                           <span className="text-base font-normal">MetaMask</span>
                         </div>
-                        <span className="text-sm text-muted-foreground">Detected</span>
+                        <ChevronRight className="h-5 w-5 text-muted-foreground" />
+                      </Button>
+
+                      <Button
+                        variant="outline"
+                        className="w-full justify-between bg-background hover:bg-accent border-border h-[60px] rounded-2xl"
+                      >
+                        <div className="flex items-center gap-3">
+                          <img src="/phantom.png" alt="Phantom" className="w-8 h-8" />
+                          <span className="text-base font-normal">Phantom</span>
+                        </div>
+                        <ChevronRight className="h-5 w-5 text-muted-foreground" />
+                      </Button>
+
+                      <Button
+                        variant="outline"
+                        className="w-full justify-between bg-background hover:bg-accent border-border h-[60px] rounded-2xl"
+                      >
+                        <div className="flex items-center gap-3">
+                          <img src="/trust.svg" alt="Trust Wallet" className="w-8 h-8" />
+                          <span className="text-base font-normal">Trust Wallet</span>
+                        </div>
+                        <ChevronRight className="h-5 w-5 text-muted-foreground" />
                       </Button>
                     </div>
 
@@ -366,23 +400,6 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
         <div className="border-t">
           <div className="container mx-auto px-4">
-            <div className="flex items-center justify-between py-2">
-              <div className="flex items-center gap-4">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={() => setShowFilterModal(true)}
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  <Filter className="h-5 w-5" />
-                </Button>
-                <span className="text-sm text-muted-foreground">
-                  {t('common.currentLanguage')}: {i18n.language.toUpperCase()}
-                </span>
-              </div>
-              <FilterDialog open={showFilterModal} onOpenChange={setShowFilterModal} />
-            </div>
-
             <Tabs defaultValue="for-you" className="w-full">
               <TabsList className="w-full justify-start bg-transparent border-b">
                 <TabsTrigger value="for-you" className="flex-1 data-[state=active]:border-b-2 data-[state=active]:border-primary rounded-none">
@@ -399,6 +416,32 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 </TabsTrigger>
               </TabsList>
             </Tabs>
+
+            <div className="flex items-center justify-between py-2">
+              <div className="flex items-center gap-4">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setShowFilterModal(true)}
+                  className="text-muted-foreground hover:text-foreground"
+                >
+                  <SlidersHorizontal className="h-5 w-5" />
+                </Button>
+                <Select defaultValue="trending">
+                  <SelectTrigger className="w-[140px]">
+                    <SelectValue placeholder={t('filters.selectRange')} />
+                  </SelectTrigger>
+                  <SelectContent className="bg-background border border-border">
+                    <SelectItem value="trending">{t('filters.trending')}</SelectItem>
+                    <SelectItem value="latest">{t('filters.latest')}</SelectItem>
+                    <SelectItem value="top">{t('filters.topRated')}</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <span className="text-sm text-muted-foreground">
+                {t('common.currentLanguage')}: {i18n.language.toUpperCase()}
+              </span>
+            </div>
           </div>
         </div>
       </header>
@@ -409,11 +452,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
       <BottomNavigation />
 
-      <div className="hidden">
-        <div id="w3m-button"></div>
-        <div id="w3m-connect-button"></div>
-        <div id="w3m-network-button"></div>
-      </div>
+      <FilterDialog open={showFilterModal} onOpenChange={setShowFilterModal} />
     </div>
   );
 };
