@@ -1,7 +1,6 @@
-
 import { useState } from "react";
 import { useTranslation } from 'react-i18next';
-import i18n from '@/i18n'; // Add this import
+import i18n from '@/i18n';
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import FilterDialog from "./FilterDialog";
@@ -12,7 +11,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Filter } from "lucide-react";
 import { AnnouncementBar } from "./announcement/AnnouncementBar";
 import { NavigationDrawer } from "./navigation/NavigationDrawer";
 import { BottomNavigation } from "./navigation/BottomNavigation";
@@ -292,7 +291,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             <NavigationDrawer />
-            <span className="text-2xl font-bold absolute left-1/2 transform -translate-x-1/2">𝓟</span>
+            <span className="text-2xl font-bold absolute left-1/2 transform -translate-x-1/2">𝓡</span>
             <div className="flex items-center gap-2">
               <SettingsDialog />
               <Dialog open={showWalletModal} onOpenChange={setShowWalletModal}>
@@ -301,97 +300,63 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                     {t('common.connect')}
                   </Button>
                 </DialogTrigger>
-                <DialogContent className="sm:max-w-[425px] rounded-3xl bg-[#1c1c1c]/95 backdrop-blur-sm p-0">
-                  <DialogHeader className="p-6 pb-0">
-                    <DialogTitle className="text-2xl font-normal">Connect a wallet</DialogTitle>
-                  </DialogHeader>
-                  <div className="space-y-3 p-6">
-                    <Button
-                      variant="outline"
-                      className="w-full justify-between bg-[#1c1c1c] hover:bg-[#2a2a2a] border-[#2a2a2a] h-[60px] rounded-2xl"
-                      onClick={() => {
-                        const connectButton = document.querySelector('#w3m-connect-button');
-                        if (connectButton) {
-                          (connectButton as HTMLElement).click();
-                        }
-                      }}
-                    >
-                      <div className="flex items-center gap-3">
-                        <img src="/coinbase.svg" alt="Coinbase" className="w-8 h-8" />
-                        <span className="text-base font-normal">Coinbase Wallet</span>
-                      </div>
-                      <ChevronRight className="h-5 w-5 text-muted-foreground" />
-                    </Button>
-                    <Button
-                      variant="outline"
-                      className="w-full justify-between bg-[#1c1c1c] hover:bg-[#2a2a2a] border-[#2a2a2a] h-[60px] rounded-2xl"
-                      onClick={() => {
-                        const connectButton = document.querySelector('#w3m-connect-button');
-                        if (connectButton) {
-                          (connectButton as HTMLElement).click();
-                        }
-                      }}
-                    >
-                      <div className="flex items-center gap-3">
-                        <img src="/walletconnect.svg" alt="WalletConnect" className="w-8 h-8" />
-                        <span className="text-base font-normal">WalletConnect</span>
-                      </div>
-                      <ChevronRight className="h-5 w-5 text-muted-foreground" />
-                    </Button>
-                    <Button
-                      variant="outline"
-                      className="w-full justify-between bg-[#1c1c1c] hover:bg-[#2a2a2a] border-[#2a2a2a] h-[60px] rounded-2xl"
-                      onClick={() => {
-                        const connectButton = document.querySelector('#w3m-connect-button');
-                        if (connectButton) {
-                          (connectButton as HTMLElement).click();
-                        }
-                      }}
-                    >
-                      <div className="flex items-center gap-3">
-                        <img src="/metamask.svg" alt="MetaMask" className="w-8 h-8" />
-                        <span className="text-base font-normal">MetaMask</span>
-                      </div>
-                      <span className="text-sm text-muted-foreground">Detected</span>
-                    </Button>
-                    <Button
-                      variant="outline"
-                      className="w-full justify-between bg-[#1c1c1c] hover:bg-[#2a2a2a] border-[#2a2a2a] h-[60px] rounded-2xl"
-                      onClick={() => {
-                        const connectButton = document.querySelector('#w3m-connect-button');
-                        if (connectButton) {
-                          (connectButton as HTMLElement).click();
-                        }
-                      }}
-                    >
-                      <div className="flex items-center gap-3">
-                        <img src="/phantom.png" alt="Phantom" className="w-8 h-8" />
-                        <span className="text-base font-normal">Phantom</span>
-                      </div>
-                      <span className="text-sm text-muted-foreground">Detected</span>
-                    </Button>
-                    <Button
-                      variant="outline"
-                      className="w-full justify-between bg-[#1c1c1c] hover:bg-[#2a2a2a] border-[#2a2a2a] h-[60px] rounded-2xl"
-                      onClick={() => {
-                        const connectButton = document.querySelector('#w3m-connect-button');
-                        if (connectButton) {
-                          (connectButton as HTMLElement).click();
-                        }
-                      }}
-                    >
-                      <div className="flex items-center gap-3">
-                        <img src="/trust.svg" alt="Trust Wallet" className="w-8 h-8" />
-                        <span className="text-base font-normal">Trust Wallet</span>
-                      </div>
-                      <ChevronRight className="h-5 w-5 text-muted-foreground" />
-                    </Button>
-                  </div>
+                <DialogContent className="sm:max-w-[425px] rounded-3xl bg-background border-0">
+                  <div className="p-6 space-y-6">
+                    <div className="text-center space-y-2">
+                      <img src="/rugtron-logo.svg" alt="RUGTRON" className="w-16 h-16 mx-auto" />
+                      <h2 className="text-xl font-semibold">CONNECT WITH RUGTRON</h2>
+                    </div>
+                    
+                    <div className="space-y-3">
+                      <Button
+                        variant="outline"
+                        className="w-full justify-between bg-background hover:bg-accent border-border h-[60px] rounded-2xl"
+                        onClick={() => {
+                          const connectButton = document.querySelector('#w3m-connect-button');
+                          if (connectButton) {
+                            (connectButton as HTMLElement).click();
+                          }
+                        }}
+                      >
+                        <div className="flex items-center gap-3">
+                          <img src="/walletconnect.svg" alt="WalletConnect" className="w-8 h-8" />
+                          <span className="text-base font-normal">WalletConnect</span>
+                        </div>
+                        <ChevronRight className="h-5 w-5 text-muted-foreground" />
+                      </Button>
 
-                  <div className="hidden">
-                    <div id="w3m-button"></div>
-                    <div id="w3m-connect-button"></div>
-                    <div id="w3m-network-button"></div>
+                      <div className="relative">
+                        <div className="absolute inset-0 flex items-center">
+                          <span className="w-full border-t" />
+                        </div>
+                        <div className="relative flex justify-center text-xs uppercase">
+                          <span className="bg-background px-2 text-muted-foreground">or continue with</span>
+                        </div>
+                      </div>
+
+                      <Button
+                        variant="outline"
+                        className="w-full justify-between bg-background hover:bg-accent border-border h-[60px] rounded-2xl"
+                        onClick={() => {
+                          const connectButton = document.querySelector('#w3m-connect-button');
+                          if (connectButton) {
+                            (connectButton as HTMLElement).click();
+                          }
+                        }}
+                      >
+                        <div className="flex items-center gap-3">
+                          <img src="/metamask.svg" alt="MetaMask" className="w-8 h-8" />
+                          <span className="text-base font-normal">MetaMask</span>
+                        </div>
+                        <span className="text-sm text-muted-foreground">Detected</span>
+                      </Button>
+                    </div>
+
+                    <p className="text-xs text-center text-muted-foreground">
+                      By connecting your wallet and using RUGTRON 3000, you agree to our{" "}
+                      <a href="/terms" className="text-primary hover:underline">terms</a> and{" "}
+                      <a href="/conditions" className="text-primary hover:underline">conditions</a>.
+                    </p>
                   </div>
                 </DialogContent>
               </Dialog>
@@ -403,11 +368,19 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           <div className="container mx-auto px-4">
             <div className="flex items-center justify-between py-2">
               <div className="flex items-center gap-4">
-                <FilterDialog open={showFilterModal} onOpenChange={setShowFilterModal} />
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setShowFilterModal(true)}
+                  className="text-muted-foreground hover:text-foreground"
+                >
+                  <Filter className="h-5 w-5" />
+                </Button>
+                <span className="text-sm text-muted-foreground">
+                  {t('common.currentLanguage')}: {i18n.language.toUpperCase()}
+                </span>
               </div>
-              <div className="text-sm text-muted-foreground">
-                {t('common.currentLanguage')}: {i18n.language.toUpperCase()}
-              </div>
+              <FilterDialog open={showFilterModal} onOpenChange={setShowFilterModal} />
             </div>
 
             <Tabs defaultValue="for-you" className="w-full">
@@ -435,6 +408,12 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       </main>
 
       <BottomNavigation />
+
+      <div className="hidden">
+        <div id="w3m-button"></div>
+        <div id="w3m-connect-button"></div>
+        <div id="w3m-network-button"></div>
+      </div>
     </div>
   );
 };
