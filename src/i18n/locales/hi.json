@@ -1,4 +1,3 @@
-
 {
   "nav": {
     "profile": "प्रोफ़ाइल",
@@ -6,20 +5,53 @@
     "communities": "समुदाय",
     "bookmarks": "बुकमार्क",
     "jobs": "नौकरियां",
-    "lists": "सूचियां",
+    "lists": "सूचियाँ",
     "spaces": "स्पेस",
     "monetization": "मुद्रीकरण",
     "settings": "सेटिंग्स और गोपनीयता",
     "help": "सहायता केंद्र"
   },
   "profile": {
-    "following": "फ़ॉलो कर रहे हैं",
-    "followers": "फ़ॉलोअर्स"
+    "following": "अनुसरण कर रहे हैं",
+    "followers": "अनुयायी"
   },
   "settings": {
     "theme": "थीम",
     "language": "भाषा",
     "currency": "मुद्रा",
-    "preferences": "वैश्विक प्राथमिकताएं"
+    "preferences": "वैश्विक प्राथमिकताएँ"
+  },
+  "activity": {
+    "action": "खरीदा"
+  },
+  "common": {
+    "of": "का",
+    "marketCap": "बाज़ार पूँजीकरण",
+    "replies": "जवाब",
+    "filterBy": "फ़िल्टर करें",
+    "currentLanguage": "भाषा",
+    "connect": "कनेक्ट"
+  },
+  "filters": {
+    "title": "फ़िल्टर",
+    "marketCap": "बाज़ार पूँजीकरण",
+    "selectRange": "रेंज चुनें",
+    "all": "सभी",
+    "under": "के तहत",
+    "over": "के ऊपर",
+    "activity": "गतिविधि स्तर",
+    "selectActivity": "गतिविधि चुनें",
+    "highActivity": "उच्च गतिविधि",
+    "mediumActivity": "मध्यम गतिविधि",
+    "lowActivity": "कम गतिविधि",
+    "trending": "ट्रेंडिंग",
+    "latest": "नवीनतम",
+    "topRated": "उच्च रेटिंग"
+  },
+  "tabs": {
+    "forYou": "आपके लिए",
+    "following": "फ़ॉलोइंग",
+    "spaces": "स्पेस",
+    "onbase": "onBase"
   }
 }

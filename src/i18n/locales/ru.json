@@ -1,4 +1,3 @@
-
 {
   "nav": {
     "profile": "Профиль",
@@ -10,16 +9,49 @@
     "spaces": "Пространства",
     "monetization": "Монетизация",
     "settings": "Настройки и конфиденциальность",
-    "help": "Справочный центр"
+    "help": "Центр помощи"
   },
   "profile": {
-    "following": "Читаемые",
-    "followers": "Читатели"
+    "following": "Читает",
+    "followers": "Подписчики"
   },
   "settings": {
     "theme": "Тема",
     "language": "Язык",
     "currency": "Валюта",
     "preferences": "Глобальные настройки"
+  },
+  "activity": {
+    "action": "купил(а)"
+  },
+  "common": {
+    "of": "из",
+    "marketCap": "рыночная капитализация",
+    "replies": "ответы",
+    "filterBy": "Фильтр по",
+    "currentLanguage": "Язык",
+    "connect": "Подключить"
+  },
+  "filters": {
+    "title": "Фильтры",
+    "marketCap": "Рыночная капитализация",
+    "selectRange": "Выберите диапазон",
+    "all": "Все",
+    "under": "Ниже",
+    "over": "Выше",
+    "activity": "Уровень активности",
+    "selectActivity": "Выберите активность",
+    "highActivity": "Высокая активность",
+    "mediumActivity": "Средняя активность",
+    "lowActivity": "Низкая активность",
+    "trending": "В тренде",
+    "latest": "Новейшие",
+    "topRated": "Самые высокие оценки"
+  },
+  "tabs": {
+    "forYou": "Для вас",
+    "following": "Подписки",
+    "spaces": "Пространства",
+    "onbase": "onBase"
   }
 }

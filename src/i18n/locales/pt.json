@@ -1,13 +1,12 @@
-
 {
   "nav": {
     "profile": "Perfil",
     "premium": "Premium",
     "communities": "Comunidades",
-    "bookmarks": "Marcadores",
+    "bookmarks": "Favoritos",
     "jobs": "Empregos",
     "lists": "Listas",
-    "spaces": "Espaços",
+    "spaces": "Spaces",
     "monetization": "Monetização",
     "settings": "Configurações e privacidade",
     "help": "Central de Ajuda"
@@ -21,5 +20,38 @@
     "language": "Idioma",
     "currency": "Moeda",
     "preferences": "Preferências globais"
+  },
+  "activity": {
+    "action": "comprou"
+  },
+  "common": {
+    "of": "de",
+    "marketCap": "capitalização de mercado",
+    "replies": "respostas",
+    "filterBy": "Filtrar por",
+    "currentLanguage": "Idioma",
+    "connect": "Conectar"
+  },
+  "filters": {
+    "title": "Filtros",
+    "marketCap": "Capitalização de mercado",
+    "selectRange": "Selecionar alcance",
+    "all": "Todos",
+    "under": "Menos de",
+    "over": "Mais de",
+    "activity": "Nível de atividade",
+    "selectActivity": "Selecionar atividade",
+    "highActivity": "Alta atividade",
+    "mediumActivity": "Atividade média",
+    "lowActivity": "Baixa atividade",
+    "trending": "Tendências",
+    "latest": "Mais recentes",
+    "topRated": "Mais bem avaliados"
+  },
+  "tabs": {
+    "forYou": "Para você",
+    "following": "Seguindo",
+    "spaces": "Spaces",
+    "onbase": "onBase"
   }
 }

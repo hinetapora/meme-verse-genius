@@ -1,25 +1,57 @@
-
 {
   "nav": {
     "profile": "প্রোফাইল",
-    "premium": "প্রিমিয়াম",
+    "premium": "প্রীমিয়াম",
     "communities": "কমিউনিটি",
-    "bookmarks": "বুকমার্ক",
+    "bookmarks": "বুকমার্কস",
     "jobs": "চাকরি",
     "lists": "তালিকা",
     "spaces": "স্পেস",
-    "monetization": "মানিটাইজেশন",
-    "settings": "সেটিংস ও গোপনীয়তা",
-    "help": "সহায়তা কেন্দ্র"
+    "monetization": "আয়",
+    "settings": "সেটিংস এবং প্রাইভেসি",
+    "help": "হেল্প সেন্টার"
   },
   "profile": {
-    "following": "ফলো করছে",
-    "followers": "ফলোয়ার"
+    "following": "অনুসরণ করছে",
+    "followers": "অনুসারী"
   },
   "settings": {
     "theme": "থিম",
     "language": "ভাষা",
     "currency": "মুদ্রা",
-    "preferences": "গ্লোবাল পছন্দসমূহ"
+    "preferences": "সামগ্রিক পছন্দ"
+  },
+  "activity": {
+    "action": "কেনা হয়েছে"
+  },
+  "common": {
+    "of": "এর",
+    "marketCap": "বাজার মূলধন",
+    "replies": "উত্তর",
+    "filterBy": "ফিল্টার করুন",
+    "currentLanguage": "ভাষা",
+    "connect": "সংযোগ"
+  },
+  "filters": {
+    "title": "ফিল্টার",
+    "marketCap": "মার্কেট ক্যাপ",
+    "selectRange": "রেঞ্জ নির্বাচন করুন",
+    "all": "সব",
+    "under": "নিচে",
+    "over": "উপরে",
+    "activity": "কর্মপরিধি",
+    "selectActivity": "কর্মপরিধি নির্বাচন করুন",
+    "highActivity": "উচ্চ কার্যকলাপ",
+    "mediumActivity": "মাঝারি কার্যকলাপ",
+    "lowActivity": "কম কার্যকলাপ",
+    "trending": "ট্রেন্ডিং",
+    "latest": "সর্বশেষ",
+    "topRated": "সর্বোচ্চ রেটিং"
+  },
+  "tabs": {
+    "forYou": "আপনার জন্য",
+    "following": "অনুসরণ করছে",
+    "spaces": "স্পেস",
+    "onbase": "onBase"
   }
 }

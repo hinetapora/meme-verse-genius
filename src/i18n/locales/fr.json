@@ -1,10 +1,9 @@
-
 {
   "nav": {
     "profile": "Profil",
     "premium": "Premium",
     "communities": "Communautés",
-    "bookmarks": "Signets",
+    "bookmarks": "Favoris",
     "jobs": "Emplois",
     "lists": "Listes",
     "spaces": "Espaces",
@@ -21,5 +20,38 @@
     "language": "Langue",
     "currency": "Devise",
     "preferences": "Préférences globales"
+  },
+  "activity": {
+    "action": "a acheté"
+  },
+  "common": {
+    "of": "de",
+    "marketCap": "capitalisation boursière",
+    "replies": "réponses",
+    "filterBy": "Filtrer par",
+    "currentLanguage": "Langue",
+    "connect": "Se connecter"
+  },
+  "filters": {
+    "title": "Filtres",
+    "marketCap": "Capitalisation boursière",
+    "selectRange": "Sélectionner la plage",
+    "all": "Tous",
+    "under": "Moins de",
+    "over": "Plus de",
+    "activity": "Niveau d'activité",
+    "selectActivity": "Sélectionner l'activité",
+    "highActivity": "Forte activité",
+    "mediumActivity": "Activité moyenne",
+    "lowActivity": "Faible activité",
+    "trending": "Tendance",
+    "latest": "Les plus récents",
+    "topRated": "Les mieux notés"
+  },
+  "tabs": {
+    "forYou": "Pour vous",
+    "following": "Abonnements",
+    "spaces": "Espaces",
+    "onbase": "onBase"
   }
 }

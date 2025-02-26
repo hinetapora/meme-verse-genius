@@ -1,4 +1,3 @@
-
 {
   "nav": {
     "profile": "Perfil",
@@ -21,5 +20,38 @@
     "language": "Idioma",
     "currency": "Moneda",
     "preferences": "Preferencias globales"
+  },
+  "activity": {
+    "action": "compró"
+  },
+  "common": {
+    "of": "de",
+    "marketCap": "capitalización de mercado",
+    "replies": "respuestas",
+    "filterBy": "Filtrar por",
+    "currentLanguage": "Idioma",
+    "connect": "Conectar"
+  },
+  "filters": {
+    "title": "Filtros",
+    "marketCap": "Capitalización de mercado",
+    "selectRange": "Seleccionar rango",
+    "all": "Todos",
+    "under": "Menos de",
+    "over": "Más de",
+    "activity": "Nivel de actividad",
+    "selectActivity": "Seleccionar actividad",
+    "highActivity": "Alta actividad",
+    "mediumActivity": "Actividad media",
+    "lowActivity": "Baja actividad",
+    "trending": "Tendencias",
+    "latest": "Lo más reciente",
+    "topRated": "Mejor valorados"
+  },
+  "tabs": {
+    "forYou": "Para ti",
+    "following": "Siguiendo",
+    "spaces": "Espacios",
+    "onbase": "onBase"
   }
 }

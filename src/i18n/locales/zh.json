@@ -1,4 +1,3 @@
-
 {
   "nav": {
     "profile": "个人资料",
@@ -7,19 +6,52 @@
     "bookmarks": "书签",
     "jobs": "工作",
     "lists": "列表",
-    "spaces": "空间",
-    "monetization": "变现",
+    "spaces": "Spaces",
+    "monetization": "获利功能",
     "settings": "设置和隐私",
     "help": "帮助中心"
   },
   "profile": {
-    "following": "正在关注",
-    "followers": "关注者"
+    "following": "关注中",
+    "followers": "粉丝"
   },
   "settings": {
     "theme": "主题",
     "language": "语言",
     "currency": "货币",
-    "preferences": "全局设置"
+    "preferences": "全局偏好"
+  },
+  "activity": {
+    "action": "购买了"
+  },
+  "common": {
+    "of": "的",
+    "marketCap": "市值",
+    "replies": "回复",
+    "filterBy": "筛选方式",
+    "currentLanguage": "语言",
+    "connect": "连接"
+  },
+  "filters": {
+    "title": "筛选器",
+    "marketCap": "市值",
+    "selectRange": "选择范围",
+    "all": "所有",
+    "under": "低于",
+    "over": "高于",
+    "activity": "活跃程度",
+    "selectActivity": "选择活跃度",
+    "highActivity": "高活跃度",
+    "mediumActivity": "中等活跃度",
+    "lowActivity": "低活跃度",
+    "trending": "趋势",
+    "latest": "最新",
+    "topRated": "最高评价"
+  },
+  "tabs": {
+    "forYou": "推荐",
+    "following": "正在关注",
+    "spaces": "Spaces",
+    "onbase": "onBase"
   }
 }

@@ -1,4 +1,3 @@
-
 {
   "nav": {
     "profile": "Profil",
@@ -17,9 +16,42 @@
     "followers": "Follower"
   },
   "settings": {
-    "theme": "Design",
+    "theme": "Thema",
     "language": "Sprache",
     "currency": "Währung",
     "preferences": "Globale Einstellungen"
+  },
+  "activity": {
+    "action": "gekauft"
+  },
+  "common": {
+    "of": "von",
+    "marketCap": "Marktkapitalisierung",
+    "replies": "Antworten",
+    "filterBy": "Filtern nach",
+    "currentLanguage": "Sprache",
+    "connect": "Verbinden"
+  },
+  "filters": {
+    "title": "Filter",
+    "marketCap": "Marktkapitalisierung",
+    "selectRange": "Bereich auswählen",
+    "all": "Alle",
+    "under": "Unter",
+    "over": "Über",
+    "activity": "Aktivitätslevel",
+    "selectActivity": "Aktivität auswählen",
+    "highActivity": "Hohe Aktivität",
+    "mediumActivity": "Mittlere Aktivität",
+    "lowActivity": "Geringe Aktivität",
+    "trending": "Trend",
+    "latest": "Neueste",
+    "topRated": "Bestbewertet"
+  },
+  "tabs": {
+    "forYou": "Für dich",
+    "following": "Folgend",
+    "spaces": "Spaces",
+    "onbase": "onBase"
   }
 }

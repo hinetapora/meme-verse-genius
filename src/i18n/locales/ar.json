@@ -1,25 +1,57 @@
-
 {
   "nav": {
     "profile": "الملف الشخصي",
     "premium": "بريميوم",
     "communities": "المجتمعات",
-    "bookmarks": "إشارات مرجعية",
+    "bookmarks": "العلامات المرجعية",
     "jobs": "وظائف",
-    "lists": "القوائم",
-    "spaces": "المساحات",
-    "monetization": "التحويل النقدي",
+    "lists": "قوائم",
+    "spaces": "مساحات",
+    "monetization": "الربح",
     "settings": "الإعدادات والخصوصية",
     "help": "مركز المساعدة"
   },
   "profile": {
-    "following": "يتابع",
+    "following": "متابَعون",
     "followers": "المتابعون"
   },
   "settings": {
-    "theme": "المظهر",
+    "theme": "السمة",
     "language": "اللغة",
     "currency": "العملة",
-    "preferences": "التفضيلات العامة"
+    "preferences": "تفضيلات عامة"
+  },
+  "activity": {
+    "action": "اشترى"
+  },
+  "common": {
+    "of": "من",
+    "marketCap": "القيمة السوقية",
+    "replies": "الردود",
+    "filterBy": "فرز بواسطة",
+    "currentLanguage": "اللغة",
+    "connect": "اتصال"
+  },
+  "filters": {
+    "title": "عوامل التصفية",
+    "marketCap": "القيمة السوقية",
+    "selectRange": "اختر النطاق",
+    "all": "الكل",
+    "under": "تحت",
+    "over": "فوق",
+    "activity": "مستوى النشاط",
+    "selectActivity": "اختر مستوى النشاط",
+    "highActivity": "نشاط عالٍ",
+    "mediumActivity": "نشاط متوسط",
+    "lowActivity": "نشاط منخفض",
+    "trending": "رائج",
+    "latest": "الأحدث",
+    "topRated": "الأعلى تقييماً"
+  },
+  "tabs": {
+    "forYou": "من أجلك",
+    "following": "المتابعة",
+    "spaces": "مساحات",
+    "onbase": "onBase"
   }
 }
