@@ -7,6 +7,7 @@ import FilterDialog from "./FilterDialog";
 import {
   Dialog,
   DialogContent,
+  DialogTrigger,
 } from "@/components/ui/dialog";
 import { ChevronRight, SlidersHorizontal } from "lucide-react";
 import { AnnouncementBar } from "./announcement/AnnouncementBar";
@@ -280,7 +281,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="min-h-screen bg-background">
       <div className="hidden md:grid grid-cols-2 gap-4 px-4 py-2 bg-primary/5">
-        <div className="rounded-lg overflow-hidden transition-all duration-300">
+        <div className="rounded-lg overflow-hidden">
           <AnnouncementBar data={transactionData} />
         </div>
         <div className="rounded-lg overflow-hidden">
@@ -297,7 +298,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         </div>
       </div>
 
-      <header className="border-b bg-background/95 backdrop-blur-sm sticky top-0 z-50">
+      <header className="border-b bg-background sticky top-0 z-50">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             <NavigationDrawer />
@@ -441,7 +442,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-6">
+      <main className="container mx-auto px-4 py-6 animate-fade-in">
         {children}
       </main>
 
