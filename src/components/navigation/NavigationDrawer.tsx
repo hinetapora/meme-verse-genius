@@ -1,8 +1,7 @@
-
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Link } from "react-router-dom";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 import {
   User,
   Crown,
@@ -28,24 +27,16 @@ const drawerLinks = [
 ];
 
 const bottomDrawerLinks = [
-  {
-    path: "/settings",
-    icon: Settings,
-    label: "Settings and privacy",
-    i18nKey: "settings", // This matches 'nav.settings' in your translation
-  },
-  {
-    path: "/help",
-    icon: HelpCircle,
-    label: "Help Center",
-    i18nKey: "help",     // This matches 'nav.help' in your translation
-  },
+  { path: "/settings", icon: Settings, i18nKey: "settings" },
+  { path: "/help", icon: HelpCircle, i18nKey: "help" },
 ];
 
-
-
 export const NavigationDrawer = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
+  console.log("[NavigationDrawer] Active language:", i18n.language);
+  console.log("[NavigationDrawer] nav.settings:", t("nav.settings"));
+  console.log("[NavigationDrawer] nav.help:", t("nav.help"));
 
   return (
     <Sheet>
@@ -71,11 +62,11 @@ export const NavigationDrawer = () => {
           <div className="flex gap-6 mb-6">
             <div>
               <span className="font-bold">2,313</span>
-              <span className="text-sm text-muted-foreground ml-1">{t('profile.following')}</span>
+              <span className="text-sm text-muted-foreground ml-1">{t("profile.following")}</span>
             </div>
             <div>
               <span className="font-bold">5,808</span>
-              <span className="text-sm text-muted-foreground ml-1">{t('profile.followers')}</span>
+              <span className="text-sm text-muted-foreground ml-1">{t("profile.followers")}</span>
             </div>
           </div>
 
@@ -90,14 +81,24 @@ export const NavigationDrawer = () => {
                 {t(`nav.${link.label.toLowerCase()}`)}
               </Link>
             ))}
-            <div className="border-t my-4" />
-            {bottomDrawerLinks.map((link) => (
-  <Link key={link.path} to={link.path} ...>
-    <link.icon className="h-6 w-6" />
-    {t(`nav.${link.i18nKey}`)}
-  </Link>
-))}
 
+            <div className="border-t my-4" />
+
+            {bottomDrawerLinks.map((link) => {
+              const translation = t(`nav.${link.i18nKey}`);
+              console.log(`[NavigationDrawer] Rendering "${link.i18nKey}" =>`, translation);
+
+              return (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className="flex items-center gap-3 text-lg hover:bg-accent px-2 py-2 rounded-md"
+                >
+                  <link.icon className="h-6 w-6" />
+                  {translation}
+                </Link>
+              );
+            })}
           </nav>
         </div>
       </SheetContent>
